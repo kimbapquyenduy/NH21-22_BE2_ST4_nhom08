@@ -117,13 +117,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="{{url('/main')}}">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{url('shop')}}">Sidebar Shop</a></li>
-                                <li><a href="{{url('shop-detail')}}">Shop Detail</a></li>
+                                <li><a href="{{url('shop-detail/{1}')}}">Shop Detail</a></li>
                                 <li><a href="{{url('cart')}}">Cart</a></li>
                                 <li><a href="{{url('checkout')}}">Checkout</a></li>
                                 <li><a href="my-account.html">My Account</a></li>
@@ -173,17 +173,17 @@
     <div class="top-search">
         <div class="container">
             <div class="input-group">
+                <form action="{{ url('/search') }}" method="post">
+                @csrf
                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" name="key" class="form-control" placeholder="Search">
                 <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </form>
             </div>
         </div>
     </div>
     <!-- End Top Search -->
-
     @yield('content')
-
-
     <!-- Start Footer  -->
     <footer>
         <div class="footer-main">

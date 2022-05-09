@@ -51,24 +51,14 @@
 <div class="categories-shop">
     <div class="container">
         <div class="row">
+        @foreach($datatype as $type)
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ asset('images/categories_img_01.jpg')}}" alt="" />
-                    <a class="btn hvr-hover" href="#">Rau Củ</a>
+                    <img class="img-fluid" src="{{ asset('images/'.$type->type_img)}}" alt="" />
+                    <a class="btn hvr-hover" href="{{ url('producttype/'.$type->type_id)}}">{{$type->type_name}}</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ asset('images/categories_img_02.jpg')}}" alt="" />
-                    <a class="btn hvr-hover" href="#">Trái Cây</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="{{ asset('images/categories_img_04.jpg')}}" alt="" />
-                    <a class="btn hvr-hover" href="#">Nước Ép</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -140,6 +130,7 @@
             </div>
             @endforeach
         </div>
+        {{ $data->links() }}
     </div>
 </div>
 <!-- End Products  -->

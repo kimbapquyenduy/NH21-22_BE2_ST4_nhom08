@@ -16,28 +16,28 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-            'user_name' => 'nguyenvana',
-            'user_password' => '123421',
+            'name' => 'nguyenvana',
             'email' => 'nguyenvana@gmail.com',
-            'role' => '1'
+            'password' => '123421',
+            'role_id' => '1'
             ],
             [
-                'user_name' => 'nguyenvanb',
-                'user_password' => '123422',
+                'name' => 'nguyenvanb',
                 'email' => 'nguyenvanb@gmail.com',
-                'role' => '2'
+                'password' => '123422',
+                'role_id' => '2'
             ],
             [
-                'user_name' => 'nguyenvanc',
-                'user_password' => '123424',
+                'name' => 'nguyenvanc',
                 'email' => 'nguyenvanc@gmail.com',
-                'role' => '2'
+                'password' => '123424',
+                'role_id' => '2'
                 ],
                 [
-                    'user_name' => 'nguyenvand',
-                    'user_password' => '123428',
+                    'name' => 'nguyenvand',
                     'email' => 'nguyenvand@gmail.com',
-                    'role' => '2'
+                    'password' => '123428',
+                    'role_id' => '2'
                     ]
         ]);
     }

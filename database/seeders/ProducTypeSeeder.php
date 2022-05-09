@@ -17,12 +17,15 @@ class ProducTypeSeeder extends Seeder
         DB::table('product_type')->insert([
             [
             'type_name' => 'Vegetable',
+            'type_img' => 'categories_img_01.jpg'
             ],
             [
                 'type_name' => 'Fruit',
+                'type_img' => 'categories_img_02.jpg'
             ],
             [
-                'product_name' => 'Juice',
+                'type_name' => 'Juice',
+                'type_img' => 'categories_img_04.jpg'
             ]
         ]);
     }

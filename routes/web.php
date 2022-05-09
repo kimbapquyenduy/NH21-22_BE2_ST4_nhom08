@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\MyController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductTypeController;
 
 
 /*
@@ -23,7 +23,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
-
+//Route::get('/', [ProductTypeController::class, 'getProductType']);
+Route::post('/search', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);
 Route::get('/{tenmien?}', [MyController::class, 'page']);
+Route::get('/producttype/{id}', [MyController::class, 'getProductByTypeID']);
 Route::get('/shop-detail/{id}', [MyController::class, 'getProductById']);
