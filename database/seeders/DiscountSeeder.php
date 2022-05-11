@@ -16,6 +16,9 @@ class DiscountSeeder extends Seeder
     {
         DB::table('discount')->insert([
             [
+                'discount_amount' => '',
+            ],
+            [
                 'discount_amount' => '10%',
             ],
             [

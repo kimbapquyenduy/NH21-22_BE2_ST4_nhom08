@@ -28,4 +28,6 @@ Route::post('/search', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);
 Route::get('/{tenmien?}', [MyController::class, 'page']);
 Route::get('/producttype/{id}', [MyController::class, 'getProductByTypeID']);
+// Route::get('/shop-detail/{id}', [MyController::class, 'getProductByManuID']);
 Route::get('/shop-detail/{id}', [MyController::class, 'getProductById']);
+

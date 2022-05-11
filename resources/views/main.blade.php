@@ -10,7 +10,7 @@
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
                         <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                        <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        <p><a class="btn hvr-hover" href="{{ url('shop') }}">Shop New</a></p>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
                         <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                        <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        <p><a class="btn hvr-hover" href="{{ url('shop') }}">Shop New</a></p>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
                         <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                        <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                        <p><a class="btn hvr-hover" href="{{ url('shop') }}">Shop New</a></p>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                 <div class="products-single fix">
                     <div class="box-img-hover">
                         <div class="type-lb">
-                            <p class="sale">Sale </p>
+                            <p class="sale">Sale-10% </p>
                         </div>
                         <img src="{{ asset('images/'.$row->product_img)}}" class="img-fluid" alt="Image">
                         <div class="mask-icon">
