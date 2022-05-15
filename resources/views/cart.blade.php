@@ -1,5 +1,7 @@
 @extends('layout')
 @section('content')
+
+
 <!-- Start All Title Box -->
 <div class="all-title-box">
     <div class="container">
@@ -24,7 +26,7 @@
                 <div class="table-main table-responsive">
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr style="text-align: center;">
                                 <th>Images</th>
                                 <th>Product Name</th>
                                 <th>Price</th>
@@ -34,78 +36,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            @if( Cart::getContent() != null)
+                            @foreach($cart = Cart::getContent() as $item)
+                            <tr class="cart-item" style="text-align: center;">
                                 <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
+                                    <a href="{{ url('shop-detail/'.$item->id)}}">
+                                        <img class="img-fluid" src="{{url('images/'.$item['attributes']->img)}}" alt="" />
                                     </a>
                                 </td>
                                 <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
+                                    <a href="{{ url('shop-detail/'.$item->id)}}">
+                                        {{$item->name}}
                                     </a>
                                 </td>
                                 <td class="price-pr">
-                                    <p>$ 80.0</p>
+                                    <p>{{number_format($item->price)}}</p>
                                 </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
+                                <td class="quantity-box"><input type="number" size="4" value="{{$item['quantity']}}" min="0" step="1" class="c-input-text qty text"></td>
                                 <td class="total-pr">
-                                    <p>$ 80.0</p>
+                                    <p>{{number_format($item->price*$item->quantity)}}</p>
                                 </td>
                                 <td class="remove-pr">
-                                    <a href="#">
+                                    <a onclick="DeleteCart('{{$item->id}}')" href="javascript:">
                                         <i class="fas fa-times"></i>
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 60.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="images/img-pro-03.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 30.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

@@ -23,6 +23,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+Route::get('/addcart/{id}', [MyController::class, 'AddCart']);
+Route::get('/delcart/{id}', [MyController::class, 'DeleteCart']);
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
 Route::post('/search', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);
@@ -30,4 +32,3 @@ Route::get('/{tenmien?}', [MyController::class, 'page']);
 Route::get('/producttype/{id}', [MyController::class, 'getProductByTypeID']);
 // Route::get('/shop-detail/{id}', [MyController::class, 'getProductByManuID']);
 Route::get('/shop-detail/{id}', [MyController::class, 'getProductById']);
-

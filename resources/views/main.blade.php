@@ -51,7 +51,7 @@
 <div class="categories-shop">
     <div class="container">
         <div class="row">
-        @foreach($datatype as $type)
+            @foreach($datatype as $type)
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
                     <img class="img-fluid" src="{{ asset('images/'.$type->type_img)}}" alt="" />
@@ -119,12 +119,12 @@
                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                             </ul>
-                            <a class="cart" href="#">Add to Cart</a>
+                            <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
                         </div>
                     </div>
                     <div class="why-text">
                         <h4>{{ $row->product_name }}</h4>
-                        <h5> {{ number_format($row->product_price) }} VND</h5>
+                        <h5> {{ number_format($row->product_price) }}</h5>
                     </div>
                 </div>
             </div>

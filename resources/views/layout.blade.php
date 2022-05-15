@@ -125,7 +125,7 @@
                                 <li><a href="{{url('shop-detail/{1}')}}">Shop Detail</a></li>
                                 <li><a href="{{url('cart')}}">Cart</a></li>
                                 <li><a href="{{url('checkout')}}">Checkout</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="javascript:">My Account</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
                             </ul>
                         </li>
@@ -142,10 +142,12 @@
                         <li class="side-menu">
                             <a href="#">
                                 <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
+
+                                <span class="badge"></span>
                                 <p>My Cart</p>
                             </a>
                         </li>
+
                     </ul>
                 </div>
                 <!-- End Atribute Navigation -->
@@ -154,12 +156,28 @@
             <div class="side">
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
                 <li class="cart-box">
+                    @if( Cart::getContent() != null)
                     <ul class="cart-list">
+
+                        @foreach($cart = Cart::getContent() as $item)
+
+
+                        <li class="cart-item">
+                            <a href="{{ url('shop-detail/'.$item->id)}}" class="photo"><img src="{{url('images/'.$item['attributes']->img)}}" class="cart-thumb" alt="" /></a>
+                            <h6><a href="{{ url('shop-detail/'.$item->id)}}">{{$item->name}} </a> <a onclick="DeleteCart('{{$item->id}}')" href="javascript:" class="fa fa-times" style="padding-left: 70px;"></a></h6>
+                            <p>{{$item['quantity']}}x - <span class="price"> {{number_format($item->price)}}</span> </p>
+
+                        </li>
+
+                        @endforeach
                         <li class="total">
                             <a href="{{url('/cart')}}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: </span>
+                            <span class="float-right"><strong>Total</strong>:{{ number_format($total=Cart::getTotal());}} </span>
                         </li>
+
                     </ul>
+                    <input id="badgevalue" type="hidden" value="{{Cart::getContent()->count();}}">
+                    @endif
                 </li>
             </div>
             <!-- End Side Menu -->
@@ -173,10 +191,10 @@
         <div class="container">
             <div class="input-group">
                 <form action="{{ url('/search') }}" method="post">
-                @csrf
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" name="key" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                    @csrf
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" name="key" class="form-control" placeholder="Search">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
                 </form>
             </div>
         </div>
@@ -296,6 +314,45 @@
     <script src="{{ asset('js/form-validator.min.js') }}"></script>
     <script src="{{ asset('js/contact-form-script.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <!-- JavaScript -->
+    <script src="{{ asset('//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js') }}"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css') }}" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="{{ asset('//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css') }}" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="{{ asset('//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css') }}" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="{{ asset('//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css') }}" />
+
+    <script>
+        function Addcart(id) {
+            $.ajax({
+                url: 'addcart/' + id,
+                type: 'GET',
+            }).done(function(res) {
+                RenderCart(res);
+                alertify.success('Add to cart successfully');
+            });
+        }
+
+        function DeleteCart(id) {
+            $.ajax({
+                url: 'delcart/' + id,
+                type: 'GET',
+            }).done(function(res) {
+                RenderCart(res);
+                alertify.success('Delete successfully');
+            });
+        }
+
+        function RenderCart(res) {
+            $(".cart-list").empty();
+            $(".cart-list").html(res);
+            $(".badge").text($("#badgevalue").val());
+        }
+    </script>
 
 </body>
 
