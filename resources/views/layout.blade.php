@@ -141,9 +141,9 @@
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu">
                             <a href="#">
-                                <i class="fa fa-shopping-bag"></i>
 
-                                <span class="badge"></span>
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">{{Cart::getContent()->count();}}</span>
                                 <p>My Cart</p>
                             </a>
                         </li>
@@ -347,10 +347,39 @@
             });
         }
 
+        function DeleteListCart(id) {
+            $.ajax({
+                url: 'dellistcart/' + id,
+                type: 'GET',
+            }).done(function(res) {
+                RenderListCart(res);
+                DeleteCart(id);
+
+            });
+        }
+
+        function UpdateListCart(id) {
+            console.log($("#quantity" + id).val());
+            $.ajax({
+                url: 'updatelistcart/' + id + '/' + $("#quantity" + id).val(),
+                type: 'GET',
+            }).done(function(res) {
+                RenderListCart(res);
+                alertify.success('Update successfully');
+
+            });
+        }
+
         function RenderCart(res) {
             $(".cart-list").empty();
             $(".cart-list").html(res);
             $(".badge").text($("#badgevalue").val());
+        }
+
+        function RenderListCart(res) {
+            $(".cart-box-main").empty();
+            $(".cart-box-main").html(res);
+
         }
     </script>
 

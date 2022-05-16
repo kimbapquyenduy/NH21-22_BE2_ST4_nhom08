@@ -25,6 +25,8 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 Route::get('/addcart/{id}', [MyController::class, 'AddCart']);
 Route::get('/delcart/{id}', [MyController::class, 'DeleteCart']);
+Route::get('/dellistcart/{id}', [MyController::class, 'DeleteListCart']);
+Route::get('/updatelistcart/{id}/{quan}', [MyController::class, 'UpdateListCart']);
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
 Route::post('/search', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);

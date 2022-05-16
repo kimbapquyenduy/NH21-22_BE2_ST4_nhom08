@@ -68,8 +68,23 @@ class MyController extends Controller
     {
         Cart::remove($id);
 
-        $cart = Cart::getContent();
 
         return view('cartitem');
+    }
+    function DeleteListCart($id)
+    {
+        Cart::remove($id);
+        return view('listcart');
+    }
+    function UpdateListCart($id, $newquan)
+    {
+        Cart::update($id,  array(
+            'quantity' => array(
+                'relative' => false,
+                'value' => $newquan
+            ),
+        ));
+
+        return view('listcart');
     }
 }
