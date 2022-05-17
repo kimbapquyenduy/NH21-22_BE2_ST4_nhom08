@@ -1017,6 +1017,17 @@
             "time": "2022-03-20T21:55:58+00:00"
         },
         {
+<<<<<<< HEAD
+            "name": "laravel/framework",
+            "version": "v8.83.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "2af2314989845db68dfbb65a54b8748ffaf26204"
+            },
+            "dist": {
+                "type": "zip",
+=======
             "name": "hardevine/shoppingcart",
             "version": "3.1",
             "source": {
@@ -1090,6 +1101,7 @@
             },
             "dist": {
                 "type": "zip",
+>>>>>>> 121c4d99895c458094c12c8936e29820adad6c10
                 "url": "https://api.github.com/repos/laravel/framework/zipball/2af2314989845db68dfbb65a54b8748ffaf26204",
                 "reference": "2af2314989845db68dfbb65a54b8748ffaf26204",
                 "shasum": ""
@@ -5855,6 +5867,18 @@
         },
         {
             "name": "laravel/sail",
+<<<<<<< HEAD
+            "version": "v1.14.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "0e0e51f19c758c79acbda11e3870641fbad5b7d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/0e0e51f19c758c79acbda11e3870641fbad5b7d9",
+                "reference": "0e0e51f19c758c79acbda11e3870641fbad5b7d9",
+=======
             "version": "v1.14.2",
             "source": {
                 "type": "git",
@@ -5865,6 +5889,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sail/zipball/cee088fbe57432dd15678e3f7b6a8259f3073c46",
                 "reference": "cee088fbe57432dd15678e3f7b6a8259f3073c46",
+>>>>>>> 121c4d99895c458094c12c8936e29820adad6c10
                 "shasum": ""
             },
             "require": {
@@ -5911,7 +5936,11 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+<<<<<<< HEAD
+            "time": "2022-05-12T12:53:10+00:00"
+=======
             "time": "2022-05-10T12:58:49+00:00"
+>>>>>>> 121c4d99895c458094c12c8936e29820adad6c10
         },
         {
             "name": "mockery/mockery",
@@ -7914,5 +7943,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

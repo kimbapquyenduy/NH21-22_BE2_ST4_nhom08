@@ -14,9 +14,9 @@
     @endforeach
     <li class="total">
         <a href="{{url('/cart')}}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-        <span class="float-right"><strong>Total</strong>:{{ number_format($total=Cart::getTotal());}} </span>
+        <span class="float-right"><strong>Total</strong>:{{ number_format($total=Cart::getTotal())}} </span>
     </li>
 
 </ul>
-<input id="badgevalue" type="hidden" value="{{Cart::getContent()->count();}}">
+<input id="badgevalue" type="hidden" value="{{Cart::getContent()->count()}}">
 @endif

@@ -53,6 +53,7 @@ class MyController extends Controller
         return view('search', compact('product'));
     }
 
+
     function AddCart($id)
     {
 
@@ -87,4 +88,5 @@ class MyController extends Controller
 
         return view('listcart');
     }
+    
 }

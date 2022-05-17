@@ -111,7 +111,7 @@
                     <hr>
                     <div class="d-flex gr-total">
                         <h5>Grand Total</h5>
-                        <div class="ml-auto h5"> {{ number_format($total=Cart::getTotal());}} </div>
+                        <div class="ml-auto h5"> {{ number_format($total=Cart::getTotal())}} </div>
                     </div>
                     <hr>
                 </div>

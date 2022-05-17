@@ -21,7 +21,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ url ('css/bootstrap.min.css') }}">
-
     <!-- Site CSS -->
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
     <!-- Responsive CSS -->
@@ -143,7 +142,7 @@
                             <a href="#">
 
                                 <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">{{Cart::getContent()->count();}}</span>
+                                <span class="badge">{{Cart::getContent()->count()}}</span>
                                 <p>My Cart</p>
                             </a>
                         </li>
@@ -172,11 +171,11 @@
                         @endforeach
                         <li class="total">
                             <a href="{{url('/cart')}}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>:{{ number_format($total=Cart::getTotal());}} </span>
+                            <span class="float-right"><strong>Total</strong>:{{ number_format($total=Cart::getTotal())}} </span>
                         </li>
 
                     </ul>
-                    <input id="badgevalue" type="hidden" value="{{Cart::getContent()->count();}}">
+                    <input id="badgevalue" type="hidden" value="{{Cart::getContent()->count()}}">
                     @endif
                 </li>
             </div>
