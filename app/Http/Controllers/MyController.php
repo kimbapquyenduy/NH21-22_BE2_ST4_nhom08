@@ -50,7 +50,7 @@ class MyController extends Controller
                 $product = Product::all();
             }
         }
-        return view('search', compact('product'));
+        return view('shop', compact('product'));
     }
 
 

@@ -189,7 +189,7 @@
     <div class="top-search">
         <div class="container">
             <div class="input-group">
-                <form action="{{ url('/search') }}" method="post">
+                <form action="{{ url('/shop') }}" method="post">
                     @csrf
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
                     <input type="text" name="key" class="form-control" placeholder="Search">

@@ -48,7 +48,33 @@
             <div class="col-xl-7 col-lg-7 col-md-6">
                 <div class="single-product-details">
                     <h2>{{ $row->product_name }}</h2>
-                    <h5> <del>{{ number_format($row->product_price) }} VND</del> {{ number_format($row->product_price) }} VND</h5>
+                    <h5> <del>{{ number_format($row->product_price) }} VND</del> <?php
+                                // echo($row->expire_date - date("Y/m/d"));
+                                $now = time(); // or your date as well
+                                $your_date = strtotime($row->expire_date);
+                                $datediff = $now - $your_date;
+
+                                $result = round($datediff / (60 * 60 * 24));
+                                if($result > 10 && $result < 6){
+                                    $price_sale = ($row->product_price * 10)/100;
+                                    echo $price_sale;
+                                }
+                                else if($result < 10){
+                                    echo " New";
+                                }
+                                else if($result > 5 && $result < 3){
+                                    $price_sale = ($row->product_price * 30)/100;
+                                    echo $price_sale;
+                                }
+                                else if($result > 0 && $result <= 3){
+                                    $price_sale = ($row->product_price * 50)/100;
+                                    echo $price_sale;
+                                }
+                                else{
+                                    echo " Expire";
+                                }
+
+                                ?></h5>
                     <p class="available-stock"><span> More than {{ $row->stock }} available / <a href="#">{{ $row->sale_amount }} sold </a></span>
                     <p>
                     <h4>Short Description:</h4>
