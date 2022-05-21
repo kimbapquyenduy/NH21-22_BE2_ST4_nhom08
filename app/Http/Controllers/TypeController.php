@@ -35,8 +35,6 @@ class TypeController extends Controller
             'type_img.required' =>'product type img required to enter'
         ]);
         
-        //return 'ok';
-
         $dataInsert = [
             $request->type_name,  
             $request->type_img
