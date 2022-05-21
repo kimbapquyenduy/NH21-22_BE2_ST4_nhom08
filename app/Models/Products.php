@@ -11,7 +11,7 @@ class products extends Model
     use HasFactory;
     protected $table = 'product';
     public function getAllProduct(){
-        $type = DB::select("SELECT * FROM `product` ORDER BY `product`.`product_id` DESC");
+        $type = DB::select("SELECT * FROM `product` ORDER BY `product`.`id` DESC");
         return $type;  
     }
 
@@ -21,10 +21,10 @@ class products extends Model
          `stock`, `sale_amount`, `expire_date`, `discound_id`, `manufacture_id`, `type_id`, `review_id`) 
          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',$data);
     }
-    public function getDetail($product_id){
-        return DB::select('SELECT * FROM '.$this->table.' WHERE product_id = ?',[$product_id]);
+    public function getDetail($id){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE id = ?',[$id]);
     }
-    public function deleteProduct($product_id){
-        return DB::delete("DELETE FROM $this->table WHERE product_id=?",[$product_id]);
+    public function deleteProduct($id){
+        return DB::delete("DELETE FROM $this->table WHERE id=?",[$id]);
     }
 }

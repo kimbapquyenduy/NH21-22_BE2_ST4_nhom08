@@ -44,7 +44,7 @@ Route::prefix('product')->name('product.')->group(function () {
     // Route::get('/edit_type/{type_id}',[TypeController::class, 'getEdit_type'])->name('edit_type');
     // Route::post('/update_type',[TypeController::class, 'postEdit_type'])->name('post-edit_type');
 
-      Route::get('/delete/{product_id}',[ProductController::class, 'delete'])->name('delete');
+      Route::get('/delete/{id}',[ProductController::class, 'delete'])->name('delete');
 
 }); 
 
@@ -55,12 +55,11 @@ Route::prefix('type')->name('type.')->group(function () {
     Route::get('/add_type', [TypeController::class, 'add_type'])->name('add_type');
     Route::post('/add_type', [TypeController::class, 'postAdd_type'])->name('post-add_type');
 
-    Route::get('/edit_type/{type_id}',[TypeController::class, 'getEdit_type'])->name('edit_type');
-    Route::post('/update_type',[TypeController::class, 'postEdit_type'])->name('post-edit_type');
-
     Route::get('/delete/{type_id}',[TypeController::class, 'delete'])->name('delete');
-
 }); 
+Route::get('/edit-product_type/{type_id}',[TypeController::class, 'edit']);
+//Route::post('/update-product_type/{type_id}',[TypeController::class, 'update']);
+
 
 //danh sach nguoi dung
 Route::prefix('users')->name('users.')->group(function () {
@@ -69,12 +68,10 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/add', [UsersController::class, 'add'])->name('add');
     Route::post('/add', [UsersController::class, 'postAdd'])->name('post-add');
 
-    Route::get('/edit/{id}',[UsersController::class, 'getEdit'])->name('edit');
-    Route::post('/update',[UsersController::class, 'postEdit'])->name('post-edit');
-
     Route::get('/delete/{id}',[UsersController::class, 'delete'])->name('delete');
 });
-
+Route::get('/edit-users/{id}',[UsersController::class, 'edit']);
+Route::post('/update-users/{id}',[UsersController::class, 'update']);
 
 
 Route::get('/dashboard', function () {

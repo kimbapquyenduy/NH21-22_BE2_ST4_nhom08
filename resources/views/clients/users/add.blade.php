@@ -5,7 +5,7 @@
     @if (session('msg'))
     <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <h2> ADD LISTS PRODUCTS </h2>
+    <h2 style="text-align: center"> ADD LISTS PRODUCTS </h2>
     @if ($errors->any())
         <div class="alect alect-danger">Data no successfully</div>
     @endif
@@ -35,13 +35,15 @@
             @enderror
         </div>
 
-        <div class="mb-3">
-            <label for="">role_id</label>
-            <input type="text" class="form-control" name="role_id" placeholder="Là user nhập 1, Admin nhập 2..." value="{{old('role_id')}}"/>
-            @error('role_id')
-            <span style="color: red;">{{$message}}</span>
-            @enderror
-        </div>
+
+
+        <div class="form-group">
+              <label for="inputStatus">role_id</label>
+              <select id="inputStatus" class="form-control custom-select" name='role_id'>
+                <option value="2" selected disabled>Admin</option>
+                <option value="1" > Users</option>
+              </select>
+            </div>
 
         <button type="submit" class="btn btn-primary">Update users</button>
         <a href="{{ route('users.index')}}" class="btn btn-warning">Back</a>

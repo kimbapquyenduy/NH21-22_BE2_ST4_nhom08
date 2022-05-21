@@ -11,7 +11,7 @@ class Users extends Model
     use HasFactory;
     protected $table = 'users';
     public function getAllUsers(){
-        $users = DB::select('SELECT * FROM `users` ORDER BY `id` DESC');
+        $users = DB::select('SELECT * FROM `users`,`role` WHERE `users`.`role_id`=`role`.`role_id` ORDER BY `users`.`id` DESC;');
         return $users;  
     }
     public function addUser($data){
@@ -29,4 +29,5 @@ class Users extends Model
     public function deleteUser($id){
         return DB::delete("DELETE FROM $this->table WHERE id=?",[$id]);
     }
+    protected $fillable = ['name','email','password','role'];
 }

@@ -24,7 +24,12 @@ class UsersController extends Controller
     }
     public function add(){
         $title='Add lists users';
-        return view('clients.users.add', compact('title'));
+
+        $users = new Users();
+
+        $usersList = $this->users->getAllUsers();
+
+        return view('clients.users.add', compact('title','usersList'));
     }
 
     public function postAdd(Request $request){
@@ -51,45 +56,22 @@ class UsersController extends Controller
         return redirect()->route('users.index')->with('msg','Add successfully');
     }
 
-    public function getEdit($id=0){
-        $title='Update users';
-        if(!empty($id)){
-            $userDetail = $this->users->getDetail($id);
-            if(!empty($userDetail[0])){
-                $userDetail = $userDetail[0];
-            }else{
-                return redirect()->route('users.index')->with('msg', 'User does not exist');
-            }
-        }else{
-            return redirect()->route('users.index')->with('msg', 'link does not exist');
-
-        }
-        return view('clients.users.edit', compact('title','userDetail'));
+    public function edit($id){
+        $users = Users::find($id);
+        return view('clients.users.edit',compact('users'));
     }
 
-    public function postEdit(Request $request, $id=0){
-        $request-> validate([
-            'name'=>'required|min:5',
-            'email' => 'required|email|',
-            'password' => 'required',
-            'role_id' => 'required'
-        ],[
-            'name.required' =>'full name is required to enter',
-            'name.min'=>'Full name with minimum 5 characters or more',
-            'email.required' => "Email required to enter",
-            'email.email'=> 'already exists in the system',
-            
-        ]);
+    public function update(Request $request,$id){
+        $users = Users::find($id);
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->password = $request->input('password');
+        $users->role_id = $request->input('role_id');
+        $users->update();
+        return redirect('users')->with('msg','users data updated successfully');
 
-        $dataUpdate = [
-            $request->name,
-            $request->email,
-            $request->password,
-            $request->role_id         
-        ];
-        $this->users->updateUser($dataUpdate,$id);
-        return back()->with('msg','Update successfully');
     }
+
     public function delete($id=0){
         if(!empty($id)){
             $userDetail = $this->users->getDetail($id);

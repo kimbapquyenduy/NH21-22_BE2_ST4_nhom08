@@ -64,11 +64,11 @@ class ProductController extends Controller
         $this->products->addProduct($dataInsert);
         return redirect()->route('product.index_product')->with('msg','Add successfully');
     }
-    public function delete($product_id=0){
-        if(!empty($product_id)){
-            $productDetail = $this->products->getDetail($product_id);
+    public function delete($id=0){
+        if(!empty($id)){
+            $productDetail = $this->products->getDetail($id);
             if(!empty($productDetail[0])){
-               $deleteStatus = $this->products->deleteProduct($product_id);
+               $deleteStatus = $this->products->deleteProduct($id);
                 if($deleteStatus){
                     $msg = 'Delete product not successfully';
                 }else{

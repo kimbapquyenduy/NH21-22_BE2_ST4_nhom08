@@ -8,8 +8,9 @@
     <table class="table table-bordered" style="text-align: center">
         <thead>
             <tr>
-                <th width="5%">STT</th>
-                <th>type_name</th>
+                <th width="5%">Id</th>
+                <th>type name</th>
+                <th>type img</th>
                 <th width="5%">Edit</th>
                 <th width="5%">Delete</th>
             </tr>
@@ -18,10 +19,11 @@
             @if (!empty($typeList))
             @foreach($typeList as $key => $item)
             <tr>
-                <td>{{$key+1}}</td>
+                <td>{{$item->type_id}}</td>
                 <td>{{$item->type_name}}</td>
+                <td><img style="width:100px" src="{{asset('images/'.$item->type_img)}}" class="card-img-top" alt="..."></td>
                 <td>      
-                    <a href="{{ route('type.edit_type', ['type_id'=>$item->type_id])}}" 
+                    <a href="#" 
                     class="btn btn-warning btn-sm"> Edit </a>   
                 </td>
                 <td>

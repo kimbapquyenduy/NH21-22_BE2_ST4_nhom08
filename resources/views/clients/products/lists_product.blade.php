@@ -8,7 +8,6 @@
         <thead>
             <tr>
                 <th width="5%">STT</th>
-                <th>product_id</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th width="20%">Img</th>
@@ -30,29 +29,27 @@
             @if (!empty($productList))
             @foreach($productList as $key => $item)
             <tr>
-                <td>{{$key+1}}</td>
-                <td>{{$item->product_id}}</td>
+                <td>{{$item->id}}</td>
                 <td>{{$item->product_name}}</td>
                 <td>{{$item->product_price}}</td>
                 <td><img src="{{asset('images/'.$item->product_img)}}" class="card-img-top" alt="..."></td>
-                
                 <td>{{$item->product_description}}</td>
                 <td>{{$item->product_feature}}</td>
                 <td>{{$item->product_sale_amount}}</td>
                 <td>{{$item->stock}}</td>
                 <td>{{$item->sale_amount}}</td>
                 <td>{{$item->expire_date}}</td>
-                <td>{{$item->discound_id}}</td>
-                <td>{{$item->manufacture_id}}</td>
-                <td>{{$item->type_id}}</td>
-                <td>{{$item->review_id}}</td>
+                <td>{{$item->discound_name}}</td>
+                <td>{{$item->manufacture_name}}</td>
+                <td>{{$item->type_name}}</td>
+                <td>{{$item->review_name}}</td>
                 <td>      
                     <a href="#"
                     class="btn btn-warning btn-sm"> Edit </a>   
                 </td>
                 <td>
                     <a onclick="return confirm('You definitely want to delete ?')" 
-                    href="{{ route('product.delete', ['product_id'=>$item->product_id])}}" 
+                    href="{{ route('product.delete', ['id'=>$item->id])}}" 
                      class="btn btn-danger btn-sm"> Delete </a> 
                     
                 </td>
@@ -60,7 +57,7 @@
             @endforeach
             @else
             <tr>
-                <td colspan="16">No product</td>
+                <td colspan="15">No product</td>
             </tr>
             @endif
             

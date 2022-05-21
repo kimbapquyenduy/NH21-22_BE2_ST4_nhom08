@@ -18,15 +18,15 @@
         </thead>
         <tbody>
             @if (!empty($usersList))
-            @foreach($usersList as $key => $item)
+            @foreach($usersList as $item)
             <tr>
-                <td>{{$key+1}}</td>
+                <td>{{$item->id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->password}}</td>
-                <td>{{$item->role_id}}</td>
+                <td>{{$item->role_name}}</td>
                 <td>
-                    <a href="{{ route('users.edit', ['id'=>$item->id])}}" class="btn btn-warning btn-sm"> Edit </a>   
+                    <a href="{{url ('edit-users/'.$item->id) }}" class="btn btn-warning btn-sm"> Edit </a>   
                 </td>
                 
                 <td>

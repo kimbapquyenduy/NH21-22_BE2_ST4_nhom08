@@ -10,12 +10,13 @@ class Type extends Model
 {
     use HasFactory;
     protected $table = 'product_type';
+
     public function getAllType(){
-        $type = DB::select("SELECT * FROM `product_type` ORDER BY `product_type`.`type_id` ASC");
+        $type = DB::select("SELECT * FROM `product_type` ORDER BY `product_type`.`type_id` DESC");
         return $type;  
     }
     public function addType($data){
-        DB::insert('INSERT INTO `product_type`(`type_name`) VALUES (?)',$data);
+        DB::insert('INSERT INTO `product_type`(`type_name`,`type_img`) VALUES (?,?)',$data);
     }
 
     public function getDetail($type_id){

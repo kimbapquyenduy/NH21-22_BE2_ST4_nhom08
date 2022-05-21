@@ -5,23 +5,23 @@
     @if (session('msg'))
     <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <h2> EDIT USERS </h2>
+    <h2 style="text-align: center"> EDIT USERS </h2>
     @if ($errors->any())
         <div class="alect alect-danger">Data no successfully</div>
     @endif
 
 
-    <form action="{{route('users.post-edit')}}" method="POST">
+    <form action="{{url('update-users/'.$users->id)}}" method="POST">
         <div class="mb-3">
             <label for="">Full Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Full Name..." value="{{old('name') ?? $userDetail->name}}"/>
+            <input type="text" class="form-control" name="name" placeholder="Full Name..." value="{{old('name') ?? $users->name}}"/>
             @error('name')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
         <div class="mb-3">
             <label for="">Email</label>
-            <input type="text" class="form-control" name="email" placeholder="Email..." value="{{old('email')?? $userDetail->email}}">
+            <input type="text" class="form-control" name="email" placeholder="Email..." value="{{old('email')?? $users->email}}">
             @error('email')
             <span style="color: red;">{{$message}}</span>
             @enderror
@@ -29,7 +29,7 @@
 
         <div class="mb-3">
             <label for="">password</label>
-            <input type="text" class="form-control" name="password" placeholder="Nhập password..." value="{{old('password')?? $userDetail->password}}"/>
+            <input type="text" class="form-control" name="password" placeholder="Nhập password..." value="{{old('password')?? $users->password}}"/>
             @error('password')
             <span style="color: red;">{{$message}}</span>
             @enderror
@@ -37,7 +37,7 @@
 
         <div class="mb-3">
             <label for="">role_id</label>
-            <input type="text" class="form-control" name="role_id" placeholder="Là user nhập 1, Admin nhập 2..." value="{{old('role_id')?? $userDetail->role_id}}"/>
+            <input type="text" class="form-control" name="role_id" placeholder="Là user nhập 1, Admin nhập 2..." value="{{old('role_id')?? $users->role_id}}"/>
             @error('role_id')
             <span style="color: red;">{{$message}}</span>
             @enderror
