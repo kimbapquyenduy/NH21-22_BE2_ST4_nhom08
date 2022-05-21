@@ -26,7 +26,7 @@ class MyController extends Controller
     function getProductById($id)
     {
         $product = Product::all();
-        $productdetail = Product::where('product_id', $id)->get();
+        $productdetail = Product::where('id', $id)->get();
         // $manu = Product::where('manufacture_id', $product->manufacture_id)->get();
         return view('shop-detail', ['dat' => $productdetail, 'data' => $product]);
     }
@@ -88,5 +88,4 @@ class MyController extends Controller
 
         return view('listcart');
     }
-    
 }

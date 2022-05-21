@@ -328,7 +328,7 @@
     <script>
         function Addcart(id) {
             $.ajax({
-                url: 'addcart/' + id,
+                url: '/addcart/' + id,
                 type: 'GET',
             }).done(function(res) {
                 RenderCart(res);
@@ -338,7 +338,7 @@
 
         function DeleteCart(id) {
             $.ajax({
-                url: 'delcart/' + id,
+                url: '/delcart/' + id,
                 type: 'GET',
             }).done(function(res) {
                 RenderCart(res);

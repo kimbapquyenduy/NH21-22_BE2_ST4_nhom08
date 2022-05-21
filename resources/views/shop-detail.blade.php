@@ -19,12 +19,12 @@
 <!-- Start Shop Detail  -->
 <div class="shop-detail-box-main">
     <div class="container">
-    <?php
-        $manu;
-    ?>
-    @foreach($dat as $row)
         <?php
-            $manu = $row->manufacture_id;
+        $manu;
+        ?>
+        @foreach($dat as $row)
+        <?php
+        $manu = $row->manufacture_id;
         ?>
         <div class="row">
             <div class="col-xl-5 col-lg-5 col-md-6">
@@ -53,19 +53,11 @@
                     <p>
                     <h4>Short Description:</h4>
                     <p>{{ $row->product_description }}</p>
-                    <ul>
-                        <li>
-                            <div class="form-group quantity-box">
-                                <label class="control-label">Quantity</label>
-                                <input class="form-control" value="0" min="0" max="{{ $row->stock }}" type="number">
-                            </div>
-                        </li>
-                    </ul>
 
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn">
-                        <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
-                            <a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>
+                            <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
+                            <a class="btn hvr-hover" data-fancybox-close="" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to cart</a>
                         </div>
                     </div>
 
@@ -81,7 +73,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
+        @endforeach
         <div class="row my-5">
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">
@@ -130,7 +122,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
                 </div>
                 <div class="featured-products-box owl-carousel owl-theme">
-                    @foreach($data as $row) 
+                    @foreach($data as $row)
                     @if($row->manufacture_id == $manu )
                     <div class="item">
                         <div class="products-single fix">
