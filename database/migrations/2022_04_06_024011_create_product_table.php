@@ -20,11 +20,9 @@ class CreateProductTable extends Migration
             $table->string('product_img');
             $table->string('product_description');
             $table->integer('product_feature');
-            $table->integer('product_sale_amount');
             $table->integer('stock');
             $table->integer('sale_amount');
             $table->date('expire_date');
-            $table->integer('discound_id');
             $table->integer('manufacture_id');
             $table->integer('type_id');
             $table->integer('review_id');

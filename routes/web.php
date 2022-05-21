@@ -31,7 +31,7 @@ Route::prefix('manufacture')->name('manufacture.')->group(function () {
     // Route::get('/edit_manufacture/{manufacture_id}',[ManufactureController::class, 'getEdit_manufacture'])->name('edit_manufacture');
     // Route::post('/update_manufacture',[ManufactureController::class, 'postEdit_manufacture'])->name('post-edit_manufacture');
 
-    Route::get('/delete/{manufacture_id}',[ManufactureController::class, 'delete'])->name('delete');
+    Route::get('/delete/{manufacture_id}', [ManufactureController::class, 'delete'])->name('delete');
 });
 
 //danh sach san pham
@@ -44,9 +44,8 @@ Route::prefix('product')->name('product.')->group(function () {
     // Route::get('/edit_type/{type_id}',[TypeController::class, 'getEdit_type'])->name('edit_type');
     // Route::post('/update_type',[TypeController::class, 'postEdit_type'])->name('post-edit_type');
 
-      Route::get('/delete/{id}',[ProductController::class, 'delete'])->name('delete');
-
-}); 
+    Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('delete');
+});
 
 //danh sách loai sản phẩm
 Route::prefix('type')->name('type.')->group(function () {
@@ -55,9 +54,9 @@ Route::prefix('type')->name('type.')->group(function () {
     Route::get('/add_type', [TypeController::class, 'add_type'])->name('add_type');
     Route::post('/add_type', [TypeController::class, 'postAdd_type'])->name('post-add_type');
 
-    Route::get('/delete/{type_id}',[TypeController::class, 'delete'])->name('delete');
-}); 
-Route::get('/edit-product_type/{type_id}',[TypeController::class, 'edit']);
+    Route::get('/delete/{type_id}', [TypeController::class, 'delete'])->name('delete');
+});
+Route::get('/edit-product_type/{type_id}', [TypeController::class, 'edit']);
 //Route::post('/update-product_type/{type_id}',[TypeController::class, 'update']);
 
 
@@ -68,21 +67,30 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/add', [UsersController::class, 'add'])->name('add');
     Route::post('/add', [UsersController::class, 'postAdd'])->name('post-add');
 
-    Route::get('/delete/{id}',[UsersController::class, 'delete'])->name('delete');
+    Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
 });
-Route::get('/edit-users/{id}',[UsersController::class, 'edit']);
-Route::post('/update-users/{id}',[UsersController::class, 'update']);
+Route::get('/edit-users/{id}', [UsersController::class, 'edit']);
+Route::post('/update-users/{id}', [UsersController::class, 'update']);
 
 
 Route::get('/dashboard', function () {
     return view('admin');
- });//->middleware(['auth'])->name('admin');
+}); //->middleware(['auth'])->name('admin');
 
 require __DIR__ . '/auth.php';
+//start cart route
 Route::get('/addcart/{id}', [MyController::class, 'AddCart']);
 Route::get('/delcart/{id}', [MyController::class, 'DeleteCart']);
 Route::get('/dellistcart/{id}', [MyController::class, 'DeleteListCart']);
 Route::get('/updatelistcart/{id}/{quan}', [MyController::class, 'UpdateListCart']);
+//end cart route
+//start gallery route
+Route::get('/showall', [MyController::class, 'ShowAllProduct']);
+Route::get('/showfeature', [MyController::class, 'ShowFeatureProduct']);
+Route::get('/showhightolow', [MyController::class, 'ShowProductPriceHighToLow']);
+Route::get('/showlowtohigh', [MyController::class, 'ShowProductPriceLowToHigh']);
+Route::get('/showbestselling', [MyController::class, 'ShowProductBestSelling']);
+//end gallery route
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
 Route::post('/search', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);

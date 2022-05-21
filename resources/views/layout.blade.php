@@ -358,7 +358,7 @@
         }
 
         function UpdateListCart(id) {
-            console.log($("#quantity" + id).val());
+
             $.ajax({
                 url: 'updatelistcart/' + id + '/' + $("#quantity" + id).val(),
                 type: 'GET',
@@ -378,6 +378,75 @@
         function RenderListCart(res) {
             $(".cart-box-main").empty();
             $(".cart-box-main").html(res);
+
+        }
+
+        function RenderGallery(res) {
+            $(".product-categorie-box").empty();
+            $(".product-categorie-box").html(res);
+
+        }
+
+        $("#shop-sort").change(function() {
+
+            ShowGallery();
+        });
+
+        function ShowGallery() {
+
+            if ($('#shop-sort option:selected').val() == 0) {
+
+                $.ajax({
+                    url: '/showall',
+                    type: 'GET',
+                }).done(function(res) {
+                    RenderGallery(res);
+                    alertify.success('Update successfully');
+
+                });
+
+            } else if ($('#shop-sort option:selected').val() == 1) {
+                $.ajax({
+                    url: '/showfeature',
+                    type: 'GET',
+                }).done(function(res) {
+                    RenderGallery(res);
+                    alertify.success('Update successfully');
+
+                });
+
+            } else if ($('#shop-sort option:selected').val() == 2) {
+                console.log(3);
+                $.ajax({
+                    url: '/showhightolow',
+                    type: 'GET',
+                }).done(function(res) {
+                    RenderGallery(res);
+                    alertify.success('Update successfully');
+
+                });
+
+            } else if ($('#shop-sort option:selected').val() == 3) {
+                $.ajax({
+                    url: '/showlowtohigh',
+                    type: 'GET',
+                }).done(function(res) {
+                    RenderGallery(res);
+                    alertify.success('Update successfully');
+
+                });
+
+            } else if ($('#shop-sort option:selected').val() == 4) {
+                $.ajax({
+                    url: '/showbestselling',
+                    type: 'GET',
+                }).done(function(res) {
+                    RenderGallery(res);
+                    alertify.success('Update successfully');
+
+                });
+
+            }
 
         }
     </script>

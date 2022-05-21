@@ -88,4 +88,32 @@ class MyController extends Controller
 
         return view('listcart');
     }
+    function ShowAllProduct()
+    {
+        $Product = Product::all();
+        return view('shopcontent', compact("Product"));
+    }
+    function ShowFeatureProduct()
+    {
+        $Product = Product::where('product_feature', 1)->get();
+        return view('shopcontent', compact("Product"));
+    }
+    function ShowProductPriceHighToLow()
+    {
+        $Product = Product::orderby('product_price', 'ASC')->get();
+
+        return view('shopcontent', compact("Product"));
+    }
+    function ShowProductPriceLowToHigh()
+    {
+        $Product = Product::orderby('product_price', 'DESC')->get();
+
+        return view('shopcontent', compact("Product"));
+    }
+    function ShowProductBestSelling()
+    {
+        $Product = Product::orderby('sale_amount', 'ASC')->limit(5)->get();
+
+        return view('shopcontent', compact("Product"));
+    }
 }
