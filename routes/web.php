@@ -93,6 +93,8 @@ Route::get('/showlowtohigh', [MyController::class, 'ShowProductPriceLowToHigh'])
 Route::get('/showbestselling', [MyController::class, 'ShowProductBestSelling']);
 //end gallery route
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
+Route::post('/', [MyController::class, 'conTactNewProduct']);
+Route::post('/contact-us', [MyController::class, 'conTact']);
 Route::post('/shop', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);
 Route::get('/{tenmien?}', [MyController::class, 'page']);

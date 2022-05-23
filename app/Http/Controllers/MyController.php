@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Product_type;
 use App\Models\User;
+use Mail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 
@@ -55,6 +56,25 @@ class MyController extends Controller
         return view('shop', compact('product'));
     }
 
+    public function conTact(Request $req){
+        $name = $req->name;
+        $email = $req->email;
+        $phone = $req->phone;
+        $content = $req->noidung;
+        Mail::send('mail.contact', compact('name','email','phone','content'), function($email) use ($req){
+            $email->to('quocdang1808@gmail.com', $req->name);
+            $email->from($req->email);
+            $email->subject('Hello');
+        });
+    }
+
+    public function conTactNewProduct(Request $req){
+        $email = $req->email;
+        Mail::send('mail.productnew', compact('email'), function($email) use ($req){
+            $email->to($req->email, 'a');
+            $email->subject('Hello');
+        });
+    }
 
     function AddCart($id)
     {
