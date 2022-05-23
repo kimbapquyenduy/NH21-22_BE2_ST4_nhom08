@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Product_type;
+use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
-use function PHPUnit\Framework\isEmpty;
 
 class MyController extends Controller
 {
@@ -16,10 +16,12 @@ class MyController extends Controller
         $product = Product::all();
         $product = Product::paginate(4);
         $product_type = Product_type::all();
+
         return view('main', ['data' => $product, 'datatype' => $product_type]);
     }
     function page($name = "/")
     {
+
         $product = Product::all();
         return view($name, ['data' => $product]);
     }

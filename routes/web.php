@@ -72,10 +72,11 @@ Route::prefix('users')->name('users.')->group(function () {
 Route::get('/edit-users/{id}', [UsersController::class, 'edit']);
 Route::post('/update-users/{id}', [UsersController::class, 'update']);
 
-
-Route::get('/dashboard', function () {
-    return view('admin');
-}); //->middleware(['auth'])->name('admin');
+//dashboard
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+});
+//end dashboard
 
 require __DIR__ . '/auth.php';
 //start cart route

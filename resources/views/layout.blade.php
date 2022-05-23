@@ -57,11 +57,31 @@
                             <li><a href="{{ url('contact-us')}}"><i class="fas fa-headset"></i> Contact Us</a></li>
                         </ul>
                     </div>
+
                 </div>
+
+                <!-- Authentication -->
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @if (Auth::check())
+                    <div class="login-box">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link style="color:white" :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </div>
+
+                    @else
                     <div class="login-box">
                         <b><a style="color:white" href="{{ url('auth.login')}}">login</a></b>
                     </div>
+                    @endif
+
+
+
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">
                             <ul class="offer-box">

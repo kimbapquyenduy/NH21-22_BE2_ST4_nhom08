@@ -19,13 +19,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            DiscountSeeder::class,
             ManufactureSeeder::class,
             ProductSeeder::class,
             ProducTypeSeeder::class,
             ReviewSeeder::class,
-            RoleSeeder::class,
-            WishlistSeeder::class
+            WishlistSeeder::class,
+            LaratrustSeeder::class
 
         ]);
     }

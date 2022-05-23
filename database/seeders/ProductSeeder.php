@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ProductSeeder extends Seeder
 {
@@ -26,7 +27,10 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-04-30',
                 'manufacture_id' => '1',
                 'type_id' => '1',
-                'review_id' => '1'
+                'review_id' => '1',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+
             ],
             [
                 'product_name' => 'SOLID FRUITS',
@@ -39,7 +43,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-04-29',
                 'manufacture_id' => '2',
                 'type_id' => '2',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'MANGO',
@@ -52,7 +58,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-04-24',
                 'manufacture_id' => '2',
                 'type_id' => '3',
-                'review_id' => '3'
+                'review_id' => '3',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'ORANGE',
@@ -65,7 +73,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-04-22',
                 'manufacture_id' => '2',
                 'type_id' => '1',
-                'review_id' => '1'
+                'review_id' => '1',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'DILL',
@@ -78,7 +88,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-04-22',
                 'manufacture_id' => '3',
                 'type_id' => '2',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'CARROT',
@@ -91,7 +103,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-04-20',
                 'manufacture_id' => '2',
                 'type_id' => '1',
-                'review_id' => '1'
+                'review_id' => '1',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'GREEN BEAN',
@@ -104,7 +118,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-04-26',
                 'manufacture_id' => '2',
                 'type_id' => '2',
-                'review_id' => '1'
+                'review_id' => '1',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'AVOCADO',
@@ -117,7 +133,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-26',
                 'manufacture_id' => '3',
                 'type_id' => '2',
-                'review_id' => '1'
+                'review_id' => '1',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'COCONUT KUMQUAT',
@@ -130,7 +148,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-22',
                 'manufacture_id' => '1',
                 'type_id' => '3',
-                'review_id' => '1'
+                'review_id' => '1',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'AVOCADO SMOTHIES',
@@ -143,7 +163,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-22',
                 'manufacture_id' => '2',
                 'type_id' => '3',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'BLUEBERRY SMOTHIES',
@@ -156,7 +178,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-12',
                 'manufacture_id' => '2',
                 'type_id' => '3',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'DRAGONFRUIT',
@@ -169,7 +193,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-12',
                 'manufacture_id' => '2',
                 'type_id' => '2',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'GRAPE',
@@ -182,7 +208,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-22',
                 'manufacture_id' => '3',
                 'type_id' => '2',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'TOMATO',
@@ -195,7 +223,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-07-12',
                 'manufacture_id' => '3',
                 'type_id' => '2',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'LETTUCE',
@@ -208,7 +238,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-07',
                 'manufacture_id' => '1',
                 'type_id' => '1',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'GRAPE JUCIE',
@@ -221,7 +253,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-12-07',
                 'manufacture_id' => '1',
                 'type_id' => '3',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'GALIC',
@@ -234,7 +268,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-12-07',
                 'manufacture_id' => '1',
                 'type_id' => '1',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'ORAGE JUICE',
@@ -247,7 +283,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-12-07',
                 'manufacture_id' => '2',
                 'type_id' => '3',
-                'review_id' => '2'
+                'review_id' => '2',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'CUCUMBER',
@@ -260,7 +298,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-08-07',
                 'manufacture_id' => '3',
                 'type_id' => '1',
-                'review_id' => '3'
+                'review_id' => '3',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'KIWI',
@@ -273,7 +313,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-08-07',
                 'manufacture_id' => '3',
                 'type_id' => '1',
-                'review_id' => '3'
+                'review_id' => '3',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'TOMATO JUICE',
@@ -286,7 +328,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-07-07',
                 'manufacture_id' => '2',
                 'type_id' => '3',
-                'review_id' => '3'
+                'review_id' => '3',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'POMEGRANATE JUICE',
@@ -299,7 +343,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-07',
                 'manufacture_id' => '2',
                 'type_id' => '3',
-                'review_id' => '3'
+                'review_id' => '3',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
                 'product_name' => 'WATER MELON JUICE',
@@ -312,7 +358,9 @@ class ProductSeeder extends Seeder
                 'expire_date' => '2022-06-07',
                 'manufacture_id' => '2',
                 'type_id' => '3',
-                'review_id' => '3'
+                'review_id' => '3',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
         ]);
     }
