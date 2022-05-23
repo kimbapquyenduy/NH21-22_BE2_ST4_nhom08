@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Manufactures;
+use App\Models\Manufacture;
 class ManufactureController extends Controller
 {
-    private $manufactures;
+    private $manufacture;
     public function __construct(){
-        $this->manufactures = new Manufactures();
+        $this->manufacture = new Manufacture();
     }
     public function index_manufacture(){
         $title = 'Lists Manufacture ';
 
-        $Manufactures = new Manufactures();
+        $manufacture = new Manufacture();
 
-        $manufacturesList = $this->manufactures->getAllManufacture();
+        $manufacturesList = $this->manufacture->getAllManufacture();
 
         return view('clients.manufacture.lists_manufacture', compact('title','manufacturesList'));
     }
@@ -34,14 +34,14 @@ class ManufactureController extends Controller
         $dataInsert = [
             $request->manufacture_name           
         ];
-        $this->manufactures->addManufacture($dataInsert);
+        $this->manufacture->addManufacture($dataInsert);
         return redirect()->route('manufacture.index_manufacture')->with('msg','Add successfully');
     }
-    public function delete($manufacture_id=0){
-        if(!empty($manufacture_id)){
-            $manufactureDetail = $this->manufactures->getDetail($manufacture_id);
+    public function delete($id=0){
+        if(!empty($id)){
+            $manufactureDetail = $this->manufacture->getDetail($id);
             if(!empty($manufactureDetail[0])){
-               $deleteStatus = $this->manufactures->deleteManufacture($manufacture_id);
+               $deleteStatus = $this->manufacture->deleteManufacture($id);
                 if($deleteStatus){
                     $msg = 'Delete manufacture not successfully';
                 }else{
@@ -54,5 +54,17 @@ class ManufactureController extends Controller
             $msg = 'link exist';
         }
         return redirect()->route('manufacture.index_manufacture')->with('msg',$msg);
+    }
+
+    public function edit($id){
+        $manufacture = Manufacture::find($id);
+        return view('clients.manufacture.edit',compact('manufacture'));
+    }
+    public function update(Request $request,$id){
+        $manufacture = Manufacture::find($id);
+        $manufacture->manufacture_name = $request->input('manufacture_name');
+        $manufacture->update();
+        return redirect('manufacture')->with('msg','users data updated successfully');
+
     }
 }

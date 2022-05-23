@@ -35,14 +35,6 @@
             @enderror
         </div>
 
-        <div class="mb-3">
-            <label for="">role_id</label>
-            <input type="text" class="form-control" name="role_id" placeholder="Là user nhập 1, Admin nhập 2..." value="{{old('role_id')?? $users->role_id}}"/>
-            @error('role_id')
-            <span style="color: red;">{{$message}}</span>
-            @enderror
-        </div>
-
         <button type="submit" class="btn btn-primary">Update users</button>
         <a href="{{ route('users.index')}}" class="btn btn-warning">Back</a>
         @csrf

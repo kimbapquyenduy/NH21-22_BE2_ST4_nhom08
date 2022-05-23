@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th width="5%">Id</th>
-                <th>type name</th>
-                <th>type img</th>
+                <th>Type name</th>
+                <th>Type img</th>
                 <th width="5%">Edit</th>
                 <th width="5%">Delete</th>
             </tr>
@@ -19,16 +19,16 @@
             @if (!empty($typeList))
             @foreach($typeList as $key => $item)
             <tr>
-                <td>{{$item->type_id}}</td>
+                <td>{{$item->id}}</td>
                 <td>{{$item->type_name}}</td>
-                <td><img style="width:100px" src="{{asset('images/'.$item->type_img)}}" class="card-img-top" alt="..."></td>
+                <td><img style="width:100px; height: 100px;" src="{{asset('images/'.$item->type_img)}}" class="card-img-top" alt="..."></td>
                 <td>      
-                    <a href="#" 
+                    <a href="{{url ('edit-product_type/'.$item->id) }}" 
                     class="btn btn-warning btn-sm"> Edit </a>   
                 </td>
                 <td>
-                    <a onclick="return confirm('You definitely want to dalete ?')" 
-                    href="{{ route('type.delete', ['type_id'=>$item->type_id])}}" 
+                <a onclick="return confirm('You definitely want to dalete ?')" 
+                    href="{{ route('type.delete', ['id'=>$item->id])}}" 
                     class="btn btn-danger btn-sm"> Delete </a> 
                 </td>
             </tr>

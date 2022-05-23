@@ -36,15 +36,6 @@
         </div>
 
 
-
-        <div class="form-group">
-              <label for="inputStatus">role_id</label>
-              <select id="inputStatus" class="form-control custom-select" name='role_id'>
-                <option value="2" selected disabled>Admin</option>
-                <option value="1" > Users</option>
-              </select>
-            </div>
-
         <button type="submit" class="btn btn-primary">Update users</button>
         <a href="{{ route('users.index')}}" class="btn btn-warning">Back</a>
         @csrf

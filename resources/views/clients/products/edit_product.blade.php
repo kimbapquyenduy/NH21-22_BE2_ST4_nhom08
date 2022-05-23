@@ -11,31 +11,31 @@
     @endif
 
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
+    <form action="{{url('update-product/'.$product->id)}}" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
             <label for="">Name</label>
-            <input type="text" class="form-control" name="product_name" placeholder="Name..." value="{{old('product_name')}}"/>
+            <input type="text" class="form-control" name="product_name" placeholder="Name..." value="{{old('product_name')?? $product->product_name}}"/>
             @error('product_name')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
         <div class="mb-3">
             <label for=""> Price </label>
-            <input type="text" class="form-control" name="product_price" placeholder="Price..." value="{{old('product_price')}}"/>
+            <input type="text" class="form-control" name="product_price" placeholder="Price..." value="{{old('product_price')?? $product->product_price}}"/>
             @error('product_price')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
         <div class="mb-3">
             <label for=""> Img </label>   
-            <input type="file" class="form-control" name="product_img" placeholder="Img..." value="{{old('product_img')}}"/>
+            <input type="file" class="form-control" name="product_img" placeholder="Img..." value="{{old('product_img')?? $product->product_img}}"/>
             @error('product_img')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
         <div class="mb-3">
             <label for=""> Description </label>
-            <input type="text" class="form-control" name="product_description" placeholder="Description..." value="{{old('product_description')}}"/>
+            <input type="text" class="form-control" name="product_description" placeholder="Description..." value="{{old('product_description')?? $product->product_description}}"/>
             @error('product_description')
             <span style="color: red;">{{$message}}</span>
             @enderror
@@ -43,7 +43,7 @@
         <div class="mb-3">
             <label for=""> Feature</label>
             
-            <select id="inputStatus" class="form-control custom-select" name='product_feature' value="{{old('product_feature')}}">
+            <select id="inputStatus" class="form-control custom-select" name='product_feature' value="{{old('product_feature')?? $product->product_feature}}">
                 <option value="1">Yes</option>
                 <option value="2">No</option>
             </select>
@@ -51,29 +51,29 @@
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
-    
+        
         <div class="mb-3">
             <label for=""> Stock </label>
-            <input type="text" class="form-control" name="stock" placeholder="Stock..." value="{{old('stock')}}"/>
+            <input type="text" class="form-control" name="stock" placeholder="Stock..." value="{{old('stock')?? $product->stock}}"/>
             @error('stock')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
         <div class="mb-3">
             <label for=""> Sale Amount </label>
-            <input type="text" class="form-control" name="sale_amount" placeholder="Sale_amount..." value="{{old('sale_amount')}}"/>
+            <input type="text" class="form-control" name="sale_amount" placeholder="Sale_amount..." value="{{old('sale_amount')?? $product->sale_amount}}"/>
             @error('sale_amount')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
         <div class="mb-3">
             <label for=""> Expire Date </label>
-            <input type="text" class="form-control" name="expire_date" placeholder="Expire_date for form yyyy/mm/dd..." value="{{old('expire_date')}}"/>
+            <input type="text" class="form-control" name="expire_date" placeholder="Expire_date for form yyyy/mm/dd..." value="{{old('expire_date')?? $product->expire_date}}"/>
             @error('expire_date')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
-        
+
         <div class="mb-3">
             <label for=""> Manufacture name </label>
             <select id="inputStatus" class="form-control custom-select" name='manufacture_id' value="{{old('manufacture_id')}}">
@@ -101,7 +101,7 @@
         </div>
         <div class="mb-3">
             <label for=""> review comment </label>
-            <select id="inputStatus" class="form-control custom-select" name='review_id' value="{{old('review_id')}}">
+            <select id="inputStatus" class="form-control custom-select" name='review_id' value="{{old('review_id')?? $product->review_id}}">
                 <option value="1">Very bad</option>
                 <option value="2">Vegetables not fresh</option>
                 <option value="3">Crushed fruit</option>

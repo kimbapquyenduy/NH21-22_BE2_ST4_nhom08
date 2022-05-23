@@ -11,17 +11,17 @@
     @endif
 
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{url('update-product_type/'.$product_type->id)}}" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for=""> Protype name </label>
-            <input type="text" class="form-control" name="type_name" placeholder="product type..." value="{{old('type_name')}}"/>
+            <input type="text" class="form-control" name="type_name" placeholder="product type..." value="{{old('type_name') ?? $product_type->type_name}}"/>
             @error('type_name')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
         <div class="mb-3">
             <label for=""> Protype name </label>
-            <input type="file" class="form-control" name="type_img" placeholder="product img..." value="{{old('type_img')}}"/>
+            <input type="file" class="form-control" name="type_img" placeholder="product img..." value="{{old('type_img') ?? $product_type->type_img}}"/>
             @error('type_img')
             <span style="color: red;">{{$message}}</span>
             @enderror

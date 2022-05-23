@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Product extends Model
 {
-    public $table = 'product';
     use HasFactory;
+    protected $table = 'product';
     public function manufacture()
     {
         return $this->belongsTo(Manufacture::class, "manufacture_id");
@@ -22,4 +22,33 @@ class Product extends Model
     {
         return $this->hasMany(Review::class, 'review_id', 'product_id');
     }
+
+
+    public function getAllProduct(){
+        $type = DB::select("SELECT `product`.`id`,`product_name`,`product_price`,`product_img`,
+         `product_description`,`product_feature`,`stock`, `sale_amount`,`expire_date`,
+         `manufacture`.`manufacture_name`,`product_type`.`type_name`, `review`.`comment` 
+         FROM `product`,`manufacture`,`product_type`,`review` 
+         WHERE `product`.`manufacture_id`=`manufacture`.`id` 
+         AND `product`.`type_id`=`product_type`.`id` 
+        AND `product`.`review_id`=`review`.`review_id` 
+        ORDER BY `product`.`id` DESC;");
+        return $type;  
+    }
+
+    public function addProduct($data){
+        DB::insert('INSERT INTO `product`(`product_name`, `product_price`, `product_img`,
+         `product_description`, `product_feature`,
+         `stock`, `sale_amount`, `expire_date`, `manufacture_id`, `type_id`, `review_id`) 
+         VALUES (?,?,?,?,?,?,?,?,?,?,?)',$data);
+    }
+    public function getDetail($id){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE id = ?',[$id]);
+    }
+    public function deleteProduct($id){
+        return DB::delete("DELETE FROM $this->table WHERE id=?",[$id]);
+    }
+    protected $fillable = ['product_name', 'product_price', 'product_img',
+    'product_description', 'product_feature',
+    'stock', 'sale_amount', 'expire_date', 'manufacture_id', 'type_id', 'review_id'];
 }

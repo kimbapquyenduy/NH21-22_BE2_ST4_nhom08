@@ -9,7 +9,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ManufactureController;
-
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +21,7 @@ use App\Http\Controllers\ManufactureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/logout', [RegisteredUserController::class, 'logout']);
 //lists manufacture
 Route::prefix('manufacture')->name('manufacture.')->group(function () {
     Route::get('/', [ManufactureController::class, 'index_manufacture'])->name('index_manufacture');
@@ -28,11 +29,10 @@ Route::prefix('manufacture')->name('manufacture.')->group(function () {
     Route::get('/add_manufacture', [ManufactureController::class, 'add_manufacture'])->name('add_manufacture');
     Route::post('/add_manufacture', [ManufactureController::class, 'postAdd_manufacture'])->name('post-add_manufacture');
 
-    // Route::get('/edit_manufacture/{manufacture_id}',[ManufactureController::class, 'getEdit_manufacture'])->name('edit_manufacture');
-    // Route::post('/update_manufacture',[ManufactureController::class, 'postEdit_manufacture'])->name('post-edit_manufacture');
-
-    Route::get('/delete/{manufacture_id}', [ManufactureController::class, 'delete'])->name('delete');
+    Route::get('/delete/{id}',[ManufactureController::class, 'delete'])->name('delete');
 });
+Route::get('/edit-manufacture/{id}',[ManufactureController::class, 'edit']);
+Route::post('/update-manufacture/{id}',[ManufactureController::class, 'update']);
 
 //danh sach san pham
 Route::prefix('product')->name('product.')->group(function () {
@@ -41,11 +41,11 @@ Route::prefix('product')->name('product.')->group(function () {
     Route::get('/add_product', [ProductController::class, 'add_product'])->name('add_product');
     Route::post('/add_product', [ProductController::class, 'postAdd_product'])->name('post-add_product');
 
-    // Route::get('/edit_type/{type_id}',[TypeController::class, 'getEdit_type'])->name('edit_type');
-    // Route::post('/update_type',[TypeController::class, 'postEdit_type'])->name('post-edit_type');
+      Route::get('/delete/{id}',[ProductController::class, 'delete'])->name('delete');
 
-    Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('delete');
-});
+}); 
+Route::get('/edit-product/{id}',[ProductController::class, 'edit']);
+Route::post('/update-product/{id}',[ProductController::class, 'update']);
 
 //danh sách loai sản phẩm
 Route::prefix('type')->name('type.')->group(function () {
@@ -54,23 +54,25 @@ Route::prefix('type')->name('type.')->group(function () {
     Route::get('/add_type', [TypeController::class, 'add_type'])->name('add_type');
     Route::post('/add_type', [TypeController::class, 'postAdd_type'])->name('post-add_type');
 
-    Route::get('/delete/{type_id}', [TypeController::class, 'delete'])->name('delete');
-});
-Route::get('/edit-product_type/{type_id}', [TypeController::class, 'edit']);
-//Route::post('/update-product_type/{type_id}',[TypeController::class, 'update']);
-
+    Route::get('/delete/{id}',[TypeController::class, 'delete'])->name('delete');
+}); 
+Route::get('/edit-product_type/{id}',[TypeController::class, 'edit']);
+Route::post('/update-product_type/{id}',[TypeController::class, 'update']);
 
 //danh sach nguoi dung
+
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/', [UsersController::class, 'index'])->name('index');
 
     Route::get('/add', [UsersController::class, 'add'])->name('add');
     Route::post('/add', [UsersController::class, 'postAdd'])->name('post-add');
 
-    Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
+    Route::get('/delete/{id}',[UsersController::class, 'delete'])->name('delete');
 });
-Route::get('/edit-users/{id}', [UsersController::class, 'edit']);
-Route::post('/update-users/{id}', [UsersController::class, 'update']);
+Route::get('/edit-users/{id}',[UsersController::class, 'edit']);
+Route::post('/update-users/{id}',[UsersController::class, 'update']);
+
+
 
 //dashboard
 Route::group(['middleware' => ['auth']], function () {

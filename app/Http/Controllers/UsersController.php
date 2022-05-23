@@ -37,7 +37,7 @@ class UsersController extends Controller
             'name'=>'required|min:5',
             'email' => 'required|email|unique:users',
             'password' => 'required',
-            'role_id' => 'required'
+
         ],[
             'name.required' =>'full name is required to enter ',
             'name.min'=>'Full name with minimum 5 characters or more',
@@ -50,7 +50,7 @@ class UsersController extends Controller
             $request->name,
             $request->email,
             $request->password,
-            $request->role_id            
+         
         ];
         $this->users->addUser($dataInsert);
         return redirect()->route('users.index')->with('msg','Add successfully');
@@ -66,7 +66,6 @@ class UsersController extends Controller
         $users->name = $request->input('name');
         $users->email = $request->input('email');
         $users->password = $request->input('password');
-        $users->role_id = $request->input('role_id');
         $users->update();
         return redirect('users')->with('msg','users data updated successfully');
 

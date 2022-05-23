@@ -7,8 +7,8 @@
     <table class="table table-bordered" style="text-align: center">
         <thead>
             <tr>
-                <th width="5%">STT</th>
-                <th>manufacture Name</th>
+                <th width="5%">Id</th>
+                <th>Manufacture Name</th>
                 <th width="5%">Edit</th>
                 <th width="5%">Delete</th>
             </tr>
@@ -17,15 +17,15 @@
             @if (!empty($manufacturesList))
             @foreach($manufacturesList as $key => $item)
             <tr>
-                <td>{{$key+1}}</td>
+                <td>{{$item->id}}</td>
                 <td>{{$item->manufacture_name}}</td>
                 <td>
-                    <a href="#" class="btn btn-warning btn-sm"> Edit </a>   
+                    <a href="{{url ('edit-manufacture/'.$item->id) }}" class="btn btn-warning btn-sm"> Edit </a>   
                 </td>
                 
                 <td>
                     <a   onclick="return confirm('You definitely want to delete ?')" 
-                    href="{{ route('manufacture.delete', ['manufacture_id'=>$item->manufacture_id])}}" 
+                    href="{{ route('manufacture.delete', ['id'=>$item->id])}}" 
                      class="btn btn-danger btn-sm"> Delete </a> 
                 </td>
             </tr>

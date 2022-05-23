@@ -11,10 +11,10 @@
     @endif
 
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{url('update-manufacture/'.$manufacture->id)}}" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for=""> Manufacture Name </label>
-            <input type="text" class="form-control" name="manufacture_name" placeholder="Manufacture Name..." value="{{old('manufacture_name')}}"/>
+            <input type="text" class="form-control" name="manufacture_name" placeholder="Manufacture Name..." value="{{old('manufacture_name')??$manufacture->manufacture_name}}"/>
             @error('manufacture_name')
             <span style="color: red;">{{$message}}</span>
             @enderror

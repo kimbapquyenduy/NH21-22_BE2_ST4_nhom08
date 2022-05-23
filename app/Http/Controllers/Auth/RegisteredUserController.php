@@ -52,4 +52,8 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+    public function logout(Request $user){
+        Auth::logout($user);
+        return redirect('/login');
+    }
 }
