@@ -86,14 +86,20 @@ Route::get('/dellistcart/{id}', [MyController::class, 'DeleteListCart']);
 Route::get('/updatelistcart/{id}/{quan}', [MyController::class, 'UpdateListCart']);
 //end cart route
 //start gallery route
+
+Route::get('/shop', [MyController::class, 'Gallery']);
 Route::get('/showall', [MyController::class, 'ShowAllProduct']);
 Route::get('/showfeature', [MyController::class, 'ShowFeatureProduct']);
 Route::get('/showhightolow', [MyController::class, 'ShowProductPriceHighToLow']);
 Route::get('/showlowtohigh', [MyController::class, 'ShowProductPriceLowToHigh']);
 Route::get('/showbestselling', [MyController::class, 'ShowProductBestSelling']);
+Route::get('/showbymanu/{id}', [MyController::class, 'ShowProductByManu']);
+Route::get('/showbytype/{id}', [MyController::class, 'ShowProductByType']);
 //end gallery route
+Route::get('/placeorder', [MyController::class, 'CartDestoy']);
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
-Route::post('/shop', [MyController::class, 'searchProductByName']);
+
+Route::post('/search-result', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);
 Route::get('/{tenmien?}', [MyController::class, 'page']);
 Route::get('/producttype/{id}', [MyController::class, 'getProductByTypeID']);

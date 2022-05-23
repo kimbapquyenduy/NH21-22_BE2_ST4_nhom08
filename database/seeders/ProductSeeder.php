@@ -57,7 +57,7 @@ class ProductSeeder extends Seeder
                 'sale_amount' => '19',
                 'expire_date' => '2022-04-24',
                 'manufacture_id' => '2',
-                'type_id' => '3',
+                'type_id' => '2',
                 'review_id' => '3',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -87,7 +87,7 @@ class ProductSeeder extends Seeder
                 'sale_amount' => '22',
                 'expire_date' => '2022-04-22',
                 'manufacture_id' => '3',
-                'type_id' => '2',
+                'type_id' => '1',
                 'review_id' => '2',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

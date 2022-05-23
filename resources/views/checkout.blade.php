@@ -1,5 +1,14 @@
 @extends('layout')
 @section('content')
+
+@if (Auth::check())
+
+@else
+<script>
+    window.location.replace("login");
+</script>
+@endif
+
 <!-- Start All Title Box -->
 <div class="all-title-box">
     <div class="container">
@@ -19,54 +28,6 @@
 <!-- Start Cart  -->
 <div class="cart-box-main">
     <div class="container">
-        <div class="row new-account-login">
-            <div class="col-sm-6 col-lg-6 mb-3">
-                <div class="title-left">
-                    <h3>Account Login</h3>
-                </div>
-                <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Click here to Login</a></h5>
-                <form class="mt-3 collapse review-form-box" id="formLogin">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="InputEmail" class="mb-0">Email Address</label>
-                            <input type="email" class="form-control" id="InputEmail" placeholder="Enter Email">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="InputPassword" class="mb-0">Password</label>
-                            <input type="password" class="form-control" id="InputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn hvr-hover">Login</button>
-                </form>
-            </div>
-            <div class="col-sm-6 col-lg-6 mb-3">
-                <div class="title-left">
-                    <h3>Create New Account</h3>
-                </div>
-                <h5><a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false">Click here to Register</a></h5>
-                <form class="mt-3 collapse review-form-box" id="formRegister">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="InputName" class="mb-0">First Name</label>
-                            <input type="text" class="form-control" id="InputName" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="InputLastname" class="mb-0">Last Name</label>
-                            <input type="text" class="form-control" id="InputLastname" placeholder="Last Name">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="InputEmail1" class="mb-0">Email Address</label>
-                            <input type="email" class="form-control" id="InputEmail1" placeholder="Enter Email">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="InputPassword1" class="mb-0">Password</label>
-                            <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn hvr-hover">Register</button>
-                </form>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-6 col-lg-6 mb-3">
                 <div class="checkout-address">
@@ -225,21 +186,16 @@
                                 <h3>Shopping cart</h3>
                             </div>
                             <div class="rounded p-2 bg-light">
+                                @if( Cart::getContent() != null)
+                                @foreach($cart = Cart::getContent() as $item)
                                 <div class="media mb-2 border-bottom">
-                                    <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                        <div class="small text-muted">Price: $80.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $80.00</div>
+                                    <div class="media-body"> <a href="{{ url('shop-detail/'.$item->id)}}"> {{$item->name}}</a>
+                                        <div class="small text-muted">Price: {{number_format($item->price)}} <span class="mx-2">|</span> Qty: {{$item->quantity}} <span class="mx-2">|</span> Subtotal: {{number_format($item->price*$item->quantity)}}</div>
                                     </div>
                                 </div>
-                                <div class="media mb-2 border-bottom">
-                                    <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                        <div class="small text-muted">Price: $60.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $60.00</div>
-                                    </div>
-                                </div>
-                                <div class="media mb-2">
-                                    <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                        <div class="small text-muted">Price: $40.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $40.00</div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -255,21 +211,14 @@
                             <hr class="my-1">
                             <div class="d-flex">
                                 <h4>Sub Total</h4>
-                                <div class="ml-auto font-weight-bold"> $ 440 </div>
+                                <div class="ml-auto font-weight-bold"> {{ number_format($total=Cart::getTotal())}} </div>
                             </div>
                             <div class="d-flex">
                                 <h4>Discount</h4>
                                 <div class="ml-auto font-weight-bold"> $ 40 </div>
                             </div>
                             <hr class="my-1">
-                            <div class="d-flex">
-                                <h4>Coupon Discount</h4>
-                                <div class="ml-auto font-weight-bold"> $ 10 </div>
-                            </div>
-                            <div class="d-flex">
-                                <h4>Tax</h4>
-                                <div class="ml-auto font-weight-bold"> $ 2 </div>
-                            </div>
+
                             <div class="d-flex">
                                 <h4>Shipping Cost</h4>
                                 <div class="ml-auto font-weight-bold"> Free </div>
@@ -277,12 +226,12 @@
                             <hr>
                             <div class="d-flex gr-total">
                                 <h5>Grand Total</h5>
-                                <div class="ml-auto h5"> $ 388 </div>
+                                <div class="ml-auto h5"> {{ number_format($total=Cart::getTotal())}} </div>
                             </div>
                             <hr>
                         </div>
                     </div>
-                    <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover">Place Order</a> </div>
+                    <div class="col-12 d-flex shopping-box"> <a href="placeorder" class="ml-auto btn hvr-hover">Place Order</a> </div>
                 </div>
             </div>
         </div>

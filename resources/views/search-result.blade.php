@@ -24,17 +24,8 @@
                 <div class="right-product-box">
                     <div class="product-item-filter row">
                         <div class="col-12 col-sm-8 text-center text-sm-left">
-                            <div class="toolbar-sorter-right">
-                                <span>Sort by </span>
-                                <select id="shop-sort" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                    <option data-display="Select" value="0">Nothing</option>
-                                    <option value="1">Feature</option>
-                                    <option value="2">Low Price → High Price</option>
-                                    <option value="3"> High Price → Low Price</option>
-                                    <option value="4">Best Selling</option>
-                                </select>
-                            </div>
 
+                            <p>Showing all 4 results</p>
                         </div>
                         <div class="col-12 col-sm-4 text-center text-sm-right">
                             <ul class="nav nav-tabs ml-auto">
@@ -57,26 +48,26 @@
                                         <div class="products-single fix">
                                             <div class="box-img-hover">
                                                 <div class="type-lb">
-                                                    <p class="sale">
-                                                        <?php
-                                                        // echo($row->expire_date - date("Y/m/d"));
-                                                        $now = time(); // or your date as well
-                                                        $your_date = strtotime($row->expire_date);
-                                                        $datediff = $now - $your_date;
-                                                        $result = round($datediff / (60 * 60 * 24));
-                                                        if ($result > 10 && $result < 6) {
-                                                            echo "Sale 10%";
-                                                        } else if ($result < 10) {
-                                                            echo "New";
-                                                        } else if ($result > 5 && $result < 3) {
-                                                            echo "Sale 30%";
-                                                        } else if ($result > 0 && $result <= 3) {
-                                                            echo "Sale 50%";
-                                                        } else {
-                                                            echo "Expire";
-                                                        }
+                                                    <p class="sale"><?php
+                                                                    // echo($row->expire_date - date("Y/m/d"));
+                                                                    $now = time(); // or your date as well
+                                                                    $your_date = strtotime($row->expire_date);
+                                                                    $datediff = $now - $your_date;
 
-                                                        ?></p>
+                                                                    $result = round($datediff / (60 * 60 * 24));
+                                                                    if ($result > 10 && $result < 6) {
+                                                                        echo "Sale 10%";
+                                                                    } else if ($result < 10) {
+                                                                        echo "New";
+                                                                    } else if ($result > 5 && $result < 3) {
+                                                                        echo "Sale 30%";
+                                                                    } else if ($result > 0 && $result <= 3) {
+                                                                        echo "Sale 50%";
+                                                                    } else {
+                                                                        echo "Expire";
+                                                                    }
+
+                                                                    ?></p>
                                                 </div>
                                                 <img src="{{ asset('images/'.$row->product_img)}}" class="img-fluid" alt="Image">
                                                 <div class="mask-icon">
@@ -85,7 +76,7 @@
                                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                     </ul>
-                                                    <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
+                                                    <a class="cart" href="#">Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="why-text">
@@ -158,43 +149,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
-                <div class="product-categori">
 
-                    <div class="filter-sidebar-left">
-                        <div class="title-left">
-                            <h3>Categories</h3>
-                        </div>
-                        <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
-                            <div class="list-group-collapse sub-men">
-                                <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Manufacture<small class="text-muted">({{count($manu)}})</small>
-                                </a>
-                                <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
-                                    <div class="list-group">
-                                        @foreach($manu as $row)
-                                        <a onclick="ShowGalleryByManu('{{$row->id}}')" href="javascript:" class="list-group-item list-group-item-action">{{$row->manufacture_name}}</a>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-collapse sub-men">
-                                <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Product Type
-                                    <small class="text-muted">({{count($manu)}})</small>
-                                </a>
-                                <div class="collapse" id="sub-men2" data-parent="#list-group-men">
-                                    <div class="list-group">
-                                        @foreach($type as $row)
-                                        <a onclick="ShowGalleryBytype('{{$row->id}}')" href="javascript:" class="list-group-item list-group-item-action">{{$row->type_name}} <small class="text-muted">(10)</small></a>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
 </div>

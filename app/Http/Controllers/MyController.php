@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Product_type;
+use App\Models\Manufacture;
 use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -52,7 +53,7 @@ class MyController extends Controller
                 $product = Product::all();
             }
         }
-        return view('shop', compact('product'));
+        return view('search-result', compact('product'));
     }
 
 
@@ -79,6 +80,13 @@ class MyController extends Controller
         Cart::remove($id);
         return view('listcart');
     }
+    function CartDestoy()
+    {
+        Cart::clear();
+
+
+        return view('cart');
+    }
     function UpdateListCart($id, $newquan)
     {
         Cart::update($id,  array(
@@ -90,6 +98,15 @@ class MyController extends Controller
 
         return view('listcart');
     }
+    function Gallery()
+    {
+        $Product = Product::all();
+        $manu = Manufacture::all();
+        $type = Product_type::all();
+
+        return view('shop', ['product' => $Product, 'manu' => $manu, 'type' => $type]);
+    }
+
     function ShowAllProduct()
     {
         $Product = Product::all();
@@ -118,4 +135,21 @@ class MyController extends Controller
 
         return view('shopcontent', compact("Product"));
     }
+    function ShowProductByManu($id)
+    {
+        $Product = Product::where('manufacture_id', $id)->get();
+        return view('shopcontent', compact("Product"));
+    }
+    function ShowProductByType($id)
+    {
+        $Product = Product::where('type_id', $id)->get();
+        return view('shopcontent', compact("Product"));
+    }
+
+
+    // function getProductByTypeID($id)
+    // {
+    //     $product = Product::where('type_id', $id)->get();
+    //     return view('producttype', ['productType' => $product]);
+    // }
 }

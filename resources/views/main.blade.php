@@ -111,29 +111,25 @@
                     <div class="box-img-hover">
                         <div class="type-lb">
                             <p class="sale"><?php
-                                // echo($row->expire_date - date("Y/m/d"));
-                                $now = time(); // or your date as well
-                                $your_date = strtotime($row->expire_date);
-                                $datediff = $now - $your_date;
+                                            // echo($row->expire_date - date("Y/m/d"));
+                                            $now = time(); // or your date as well
+                                            $your_date = strtotime($row->expire_date);
+                                            $datediff = $now - $your_date;
 
-                                $result = round($datediff / (60 * 60 * 24));
-                                if($result > 10 && $result < 6){
-                                    echo "Sale 10%";
-                                }
-                                else if($result < 10){
-                                    echo "New";
-                                }
-                                else if($result > 5 && $result < 3){
-                                    echo "Sale 30%";
-                                }
-                                else if($result > 0 && $result <= 3){
-                                    echo "Sale 50%";
-                                }
-                                else{
-                                    echo "Expire";
-                                }
+                                            $result = round($datediff / (60 * 60 * 24));
+                                            if ($result > 10 && $result < 6) {
+                                                echo "Sale 10%";
+                                            } else if ($result < 10) {
+                                                echo "New";
+                                            } else if ($result > 5 && $result < 3) {
+                                                echo "Sale 30%";
+                                            } else if ($result > 0 && $result <= 3) {
+                                                echo "Sale 50%";
+                                            } else {
+                                                echo "Expire";
+                                            }
 
-                                ?></p>
+                                            ?></p>
                         </div>
                         <img src="{{ asset('images/'.$row->product_img)}}" class="img-fluid" alt="Image">
                         <div class="mask-icon">

@@ -209,7 +209,7 @@
     <div class="top-search">
         <div class="container">
             <div class="input-group">
-                <form action="{{ url('/shop') }}" method="post">
+                <form action="{{ url('/search-result') }}" method="post">
                     @csrf
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
                     <input type="text" name="key" class="form-control" placeholder="Search">
@@ -389,6 +389,8 @@
             });
         }
 
+
+
         function RenderCart(res) {
             $(".cart-list").empty();
             $(".cart-list").html(res);
@@ -411,6 +413,28 @@
 
             ShowGallery();
         });
+
+        function ShowGalleryBytype(id) {
+            $.ajax({
+                url: '/showbytype/' + id,
+                type: 'GET',
+            }).done(function(res) {
+                RenderGallery(res);
+                alertify.success('Update successfully');
+
+            });
+        }
+
+        function ShowGalleryByManu(id) {
+            $.ajax({
+                url: '/showbymanu/' + id,
+                type: 'GET',
+            }).done(function(res) {
+                RenderGallery(res);
+                alertify.success('Update successfully');
+
+            });
+        }
 
         function ShowGallery() {
 

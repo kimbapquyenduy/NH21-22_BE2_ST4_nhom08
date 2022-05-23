@@ -70,6 +70,9 @@
                                 </td>
                             </tr>
                             @endforeach
+
+                            @else
+                            <h2>Is Empty</h2>
                             @endif
                         </tbody>
                     </table>
