@@ -100,6 +100,9 @@ Route::get('/placeorder', [MyController::class, 'CartDestoy']);
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
 
 Route::post('/search-result', [MyController::class, 'searchProductByName']);
+Route::post('/', [MyController::class, 'conTactNewProduct']);
+Route::post('/contact-us', [MyController::class, 'conTact']);
+Route::post('/shop', [MyController::class, 'searchProductByName']);
 Route::get('/', [MyController::class, 'index']);
 Route::get('/{tenmien?}', [MyController::class, 'page']);
 Route::get('/producttype/{id}', [MyController::class, 'getProductByTypeID']);

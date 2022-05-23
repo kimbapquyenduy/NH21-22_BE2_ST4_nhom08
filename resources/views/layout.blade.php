@@ -238,12 +238,13 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-top-box">
                             <h3>Newsletter</h3>
-                            <form class="newsletter-box">
+                            <form action="" method="post" class="newsletter-box">
+                                @csrf
                                 <div class="form-group">
-                                    <input class="" type="email" name="Email" placeholder="Email Address*" />
+                                    <input class="" type="email" name="email" placeholder="Email Address*" />
                                     <i class="fa fa-envelope"></i>
                                 </div>
-                                <button class="btn hvr-hover" type="submit">Submit</button>
+                                <button  type="submit">Submit</button>
                             </form>
                         </div>
                     </div>
