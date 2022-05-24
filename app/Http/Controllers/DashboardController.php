@@ -16,9 +16,9 @@ class DashboardController extends Controller
     {
         if (Auth::user()->hasRole('user')) {
             $product = Product::all();
-            $product = Product::paginate(4);
             $product_type = Product_type::all();
-            return view('main', ['data' => $product, 'datatype' => $product_type]);
+            $Productbs = Product::orderby('sale_amount', 'ASC')->limit(10)->get();
+            return view('main', ['data' => $product, 'datatype' => $product_type, 'bs' => $Productbs]);
         } else if (Auth::user()->hasRole('admin')) {
             return view('admin');
         }

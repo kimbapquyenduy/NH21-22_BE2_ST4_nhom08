@@ -48,33 +48,7 @@
             <div class="col-xl-7 col-lg-7 col-md-6">
                 <div class="single-product-details">
                     <h2>{{ $row->product_name }}</h2>
-                    <h5> <del>{{ number_format($row->product_price) }} VND</del> <?php
-                                // echo($row->expire_date - date("Y/m/d"));
-                                $now = time(); // or your date as well
-                                $your_date = strtotime($row->expire_date);
-                                $datediff = $now - $your_date;
-
-                                $result = round($datediff / (60 * 60 * 24));
-                                if($result > 10 && $result < 6){
-                                    $price_sale = ($row->product_price * 10)/100;
-                                    echo $price_sale;
-                                }
-                                else if($result < 10){
-                                    echo " New";
-                                }
-                                else if($result > 5 && $result < 3){
-                                    $price_sale = ($row->product_price * 30)/100;
-                                    echo $price_sale;
-                                }
-                                else if($result > 0 && $result <= 3){
-                                    $price_sale = ($row->product_price * 50)/100;
-                                    echo $price_sale;
-                                }
-                                else{
-                                    echo " Expire";
-                                }
-
-                                ?></h5>
+                    <h5> {{ number_format($row->product_price) }} VND </h5>
                     <p class="available-stock"><span> More than {{ $row->stock }} available / <a href="#">{{ $row->sale_amount }} sold </a></span>
                     <p>
                     <h4>Short Description:</h4>
@@ -144,34 +118,34 @@
         <div class="row my-5">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Featured Products</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                    <h1>Relative Products</h1>
                 </div>
                 <div class="featured-products-box owl-carousel owl-theme">
                     @foreach($data as $row)
-                    @if($row->manufacture_id == $manu )
+                    @if ($row->manufacture_id== $manu)
                     <div class="item">
                         <div class="products-single fix">
                             <div class="box-img-hover">
                                 <img src="{{ asset('images/'.$row->product_img)}}" class="img-fluid" alt="Image">
                                 <div class="mask-icon">
                                     <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                        <li><a href="{{ url('shop-detail/'.$row->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+
                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                     </ul>
-                                    <a class="cart" href="#">Add to Cart</a>
+                                    <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
                                 </div>
                             </div>
                             <div class="why-text">
                                 <h4>{{$row->product_name}}</h4>
-                                <h5> $9.79</h5>
+                                <h5> {{ number_format($row->product_price) }}VND</h5>
                             </div>
                         </div>
                     </div>
                     @endif
                     @endforeach
                 </div>
+
             </div>
         </div>
 

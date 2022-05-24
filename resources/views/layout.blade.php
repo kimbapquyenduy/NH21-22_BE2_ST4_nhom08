@@ -141,7 +141,6 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{url('shop')}}">Sidebar Shop</a></li>
-                                <li><a href="{{url('shop-detail/{1}')}}">Shop Detail</a></li>
                                 <li><a href="{{url('cart')}}">Cart</a></li>
                                 <li><a href="{{url('checkout')}}">Checkout</a></li>
                                 <li><a href="javascript:">My Account</a></li>
@@ -209,10 +208,10 @@
     <div class="top-search">
         <div class="container">
             <div class="input-group">
-                <form action="{{ url('/search-result') }}" method="post">
-                    @csrf
+                <form action="{{ url('/search-result') }}" method="get">
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
                     <input type="text" name="key" class="form-control" placeholder="Search">
+                    <input type="submit" style="display:none" />
                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
                 </form>
             </div>
@@ -244,7 +243,7 @@
                                     <input class="" type="email" name="email" placeholder="Email Address*" />
                                     <i class="fa fa-envelope"></i>
                                 </div>
-                                <button  type="submit">Submit</button>
+                                <button type="submit">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -385,7 +384,8 @@
                 type: 'GET',
             }).done(function(res) {
                 RenderListCart(res);
-                alertify.success('Update successfully');
+                DeleteCart(null);
+
 
             });
         }

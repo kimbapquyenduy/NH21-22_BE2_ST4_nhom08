@@ -22,6 +22,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/logout', [RegisteredUserController::class, 'logout']);
 //lists review
 Route::prefix('review')->name('review.')->group(function () {
@@ -30,10 +31,10 @@ Route::prefix('review')->name('review.')->group(function () {
     Route::get('/add_review', [ReviewController::class, 'add_review'])->name('add_review');
     Route::post('/add_review', [ReviewController::class, 'postAdd_review'])->name('post-add_review');
 
-    Route::get('/delete/{id}',[ReviewController::class, 'delete'])->name('delete');
+    Route::get('/delete/{id}', [ReviewController::class, 'delete'])->name('delete');
 });
-Route::get('/edit-review/{id}',[ReviewController::class, 'edit']);
-Route::post('/update-review/{id}',[ReviewController::class, 'update']);
+Route::get('/edit-review/{id}', [ReviewController::class, 'edit']);
+Route::post('/update-review/{id}', [ReviewController::class, 'update']);
 
 //lists manufacture
 Route::prefix('manufacture')->name('manufacture.')->group(function () {
@@ -42,10 +43,10 @@ Route::prefix('manufacture')->name('manufacture.')->group(function () {
     Route::get('/add_manufacture', [ManufactureController::class, 'add_manufacture'])->name('add_manufacture');
     Route::post('/add_manufacture', [ManufactureController::class, 'postAdd_manufacture'])->name('post-add_manufacture');
 
-    Route::get('/delete/{id}',[ManufactureController::class, 'delete'])->name('delete');
+    Route::get('/delete/{id}', [ManufactureController::class, 'delete'])->name('delete');
 });
-Route::get('/edit-manufacture/{id}',[ManufactureController::class, 'edit']);
-Route::post('/update-manufacture/{id}',[ManufactureController::class, 'update']);
+Route::get('/edit-manufacture/{id}', [ManufactureController::class, 'edit']);
+Route::post('/update-manufacture/{id}', [ManufactureController::class, 'update']);
 
 //danh sach san pham
 Route::prefix('product')->name('product.')->group(function () {
@@ -54,11 +55,10 @@ Route::prefix('product')->name('product.')->group(function () {
     Route::get('/add_product', [ProductController::class, 'add_product'])->name('add_product');
     Route::post('/add_product', [ProductController::class, 'postAdd_product'])->name('post-add_product');
 
-      Route::get('/delete/{id}',[ProductController::class, 'delete'])->name('delete');
-
-}); 
-Route::get('/edit-product/{id}',[ProductController::class, 'edit']);
-Route::post('/update-product/{id}',[ProductController::class, 'update']);
+    Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('delete');
+});
+Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
+Route::post('/update-product/{id}', [ProductController::class, 'update']);
 
 //danh sách loai sản phẩm
 Route::prefix('type')->name('type.')->group(function () {
@@ -67,10 +67,10 @@ Route::prefix('type')->name('type.')->group(function () {
     Route::get('/add_type', [TypeController::class, 'add_type'])->name('add_type');
     Route::post('/add_type', [TypeController::class, 'postAdd_type'])->name('post-add_type');
 
-    Route::get('/delete/{id}',[TypeController::class, 'delete'])->name('delete');
-}); 
-Route::get('/edit-product_type/{id}',[TypeController::class, 'edit']);
-Route::post('/update-product_type/{id}',[TypeController::class, 'update']);
+    Route::get('/delete/{id}', [TypeController::class, 'delete'])->name('delete');
+});
+Route::get('/edit-product_type/{id}', [TypeController::class, 'edit']);
+Route::post('/update-product_type/{id}', [TypeController::class, 'update']);
 
 //danh sach nguoi dung
 
@@ -80,10 +80,10 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/add', [UsersController::class, 'add'])->name('add');
     Route::post('/add', [UsersController::class, 'postAdd'])->name('post-add');
 
-    Route::get('/delete/{id}',[UsersController::class, 'delete'])->name('delete');
+    Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
 });
-Route::get('/edit-users/{id}',[UsersController::class, 'edit']);
-Route::post('/update-users/{id}',[UsersController::class, 'update']);
+Route::get('/edit-users/{id}', [UsersController::class, 'edit']);
+Route::post('/update-users/{id}', [UsersController::class, 'update']);
 
 
 
@@ -114,7 +114,7 @@ Route::get('/showbytype/{id}', [MyController::class, 'ShowProductByType']);
 Route::get('/placeorder', [MyController::class, 'CartDestoy']);
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
 
-Route::post('/search-result', [MyController::class, 'searchProductByName']);
+Route::get('/search-result', [MyController::class, 'searchProductByName']);
 Route::post('/', [MyController::class, 'conTactNewProduct']);
 Route::post('/contact-us', [MyController::class, 'conTact']);
 Route::post('/shop', [MyController::class, 'searchProductByName']);

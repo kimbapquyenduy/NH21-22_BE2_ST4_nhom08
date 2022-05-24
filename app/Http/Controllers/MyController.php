@@ -16,10 +16,10 @@ class MyController extends Controller
     function index()
     {
         $product = Product::all();
-        $product = Product::paginate(4);
-        $product_type = Product_type::all();
 
-        return view('main', ['data' => $product, 'datatype' => $product_type]);
+        $product_type = Product_type::all();
+        $Productbs = Product::orderby('sale_amount', 'ASC')->limit(10)->get();
+        return view('main', ['data' => $product, 'datatype' => $product_type, 'bs' => $Productbs]);
     }
     function page($name = "/")
     {
@@ -46,14 +46,28 @@ class MyController extends Controller
     // }
     function searchProductByName(Request $request)
     {
-        if ($request->isMethod('post')) {
-            $search = $request->get('key');
-            if ($search != "") {
-                $product = Product::where('product_name', 'LIKE', '%' . $search . '%')->paginate(4);
-            } else {
-                $product = Product::all();
-            }
+
+
+        // if ($search != "") {
+        //     $product = Product::where('product_name', 'LIKE', '%' . $search . '%')->paginate(8);
+        // } else {
+        //     $product = Product::all();
+        //     $product = Product::paginate(8);
+        // }
+
+        $search =  $request->input('key');
+        if ($search != "") {
+            $product = Product::where(function ($query) use ($search) {
+
+                $query->where('product_name', 'LIKE', '%' . $search . '%');
+            })
+                ->paginate(6);
+            $product->appends(['key' => $search]);
+        } else {
+            $product = Product::paginate(6);
         }
+
+
         return view('search-result', compact('product'));
     }
 

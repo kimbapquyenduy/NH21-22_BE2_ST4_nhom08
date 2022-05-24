@@ -213,10 +213,6 @@
                                 <h4>Sub Total</h4>
                                 <div class="ml-auto font-weight-bold"> {{ number_format($total=Cart::getTotal())}} </div>
                             </div>
-                            <div class="d-flex">
-                                <h4>Discount</h4>
-                                <div class="ml-auto font-weight-bold"> $ 40 </div>
-                            </div>
                             <hr class="my-1">
 
                             <div class="d-flex">
