@@ -23,7 +23,7 @@ class Manufacture extends Model
     }
     
     public function addManufacture($data){
-        DB::insert('INSERT INTO `manufacture`(`manufacture_name`) VALUES (?)',$data);
+        DB::insert('INSERT INTO `manufacture`(`manufacture_name`,`created_at`) VALUES (?,?)',$data);
     }
 
     public function getDetail($id){

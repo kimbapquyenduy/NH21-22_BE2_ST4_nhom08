@@ -77,6 +77,7 @@ class ProductController extends Controller
             $request->manufacture_id,
             $request->type_id,
             $request->review_id,
+            date('Y-m-d H:i:s'),
         ];
         $this->product->addProduct($dataInsert);
         return redirect()->route('product.index_product')->with('msg','Add successfully');
@@ -129,6 +130,7 @@ class ProductController extends Controller
         $product->manufacture_id = $request->input('manufacture_id');
         $product->type_id = $request->input('type_id');
         $product->review_id = $request->input('review_id'); 
+        date('Y-m-d H:i:s');
         $product->update();
         return redirect('product')->with('msg','product data updated successfully');
 

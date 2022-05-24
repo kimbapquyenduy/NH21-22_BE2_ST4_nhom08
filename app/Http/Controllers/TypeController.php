@@ -47,7 +47,8 @@ class TypeController extends Controller
 
         $dataInsert = [
             $request->type_name,  
-            $request->type_img = $filename
+            $request->type_img = $filename,
+            date('Y-m-d H:i:s'),
            
         ];
         $this->product_type->addType($dataInsert);
@@ -90,6 +91,7 @@ class TypeController extends Controller
         $product_type->type_name = $request->input('type_name');
         $test=$product_type->type_img= $filename;
         $test = $request->input('type_img');
+        date('Y-m-d H:i:s');
         $product_type->update();
         return redirect('type')->with('msg','users data updated successfully');
 

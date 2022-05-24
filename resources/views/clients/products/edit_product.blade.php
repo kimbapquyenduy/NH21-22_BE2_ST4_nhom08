@@ -45,7 +45,7 @@
             
             <select id="inputStatus" class="form-control custom-select" name='product_feature' value="{{old('product_feature')?? $product->product_feature}}">
                 <option value="1">Yes</option>
-                <option value="2">No</option>
+                <option value="0">No</option>
             </select>
             @error('product_feature')
             <span style="color: red;">{{$message}}</span>
@@ -68,7 +68,9 @@
         </div>
         <div class="mb-3">
             <label for=""> Expire Date </label>
-            <input type="text" class="form-control" name="expire_date" placeholder="Expire_date for form yyyy/mm/dd..." value="{{old('expire_date')?? $product->expire_date}}"/>
+            <input type="date" id="start" name="expire_date"
+                value="{{old('expire_date')?? $product->expire_date}}"
+                min="2018-01-01" max="2030-12-31">
             @error('expire_date')
             <span style="color: red;">{{$message}}</span>
             @enderror

@@ -158,6 +158,12 @@
                     <p>Users</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ route('review.index_review')}}" class="nav-link active">
+                  <i class="fa fa-comments" aria-hidden="true"></i>
+                    <p>Review</p>
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>

@@ -32,7 +32,8 @@ class ManufactureController extends Controller
             'manufacture_name.required' =>'Manufacture Name is required to enter'
         ]);
         $dataInsert = [
-            $request->manufacture_name           
+            $request->manufacture_name,
+            date('Y-m-d H:i:s'),           
         ];
         $this->manufacture->addManufacture($dataInsert);
         return redirect()->route('manufacture.index_manufacture')->with('msg','Add successfully');
@@ -63,8 +64,9 @@ class ManufactureController extends Controller
     public function update(Request $request,$id){
         $manufacture = Manufacture::find($id);
         $manufacture->manufacture_name = $request->input('manufacture_name');
+        date('Y-m-d H:i:s');
         $manufacture->update();
-        return redirect('manufacture')->with('msg','users data updated successfully');
+        return redirect('manufacture')->with('msg','manufacture data updated successfully');
 
     }
 }

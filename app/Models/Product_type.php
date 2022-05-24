@@ -23,7 +23,7 @@ class Product_type extends Model
         return $type;  
     }
     public function addType($data){
-        DB::insert('INSERT INTO `product_type`(`type_name`,`type_img`) VALUES (?,?)',$data);
+        DB::insert('INSERT INTO `product_type`(`type_name`,`type_img`,`created_at`) VALUES (?,?,?)',$data);
     }
 
     public function getDetail($id){

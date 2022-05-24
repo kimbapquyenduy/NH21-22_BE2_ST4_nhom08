@@ -31,7 +31,7 @@ class Product extends Model
          FROM `product`,`manufacture`,`product_type`,`review` 
          WHERE `product`.`manufacture_id`=`manufacture`.`id` 
          AND `product`.`type_id`=`product_type`.`id` 
-        AND `product`.`review_id`=`review`.`review_id` 
+        AND `product`.`review_id`=`review`.`id`     
         ORDER BY `product`.`id` DESC;");
         return $type;  
     }
@@ -39,8 +39,8 @@ class Product extends Model
     public function addProduct($data){
         DB::insert('INSERT INTO `product`(`product_name`, `product_price`, `product_img`,
          `product_description`, `product_feature`,
-         `stock`, `sale_amount`, `expire_date`, `manufacture_id`, `type_id`, `review_id`) 
-         VALUES (?,?,?,?,?,?,?,?,?,?,?)',$data);
+         `stock`, `sale_amount`, `expire_date`, `manufacture_id`, `type_id`, `review_id`,`created_at`) 
+         VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',$data);
     }
     public function getDetail($id){
         return DB::select('SELECT * FROM '.$this->table.' WHERE id = ?',[$id]);

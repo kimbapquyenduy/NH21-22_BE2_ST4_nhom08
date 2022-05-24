@@ -50,6 +50,7 @@ class UsersController extends Controller
             $request->name,
             $request->email,
             $request->password,
+            date('Y-m-d H:i:s'),
          
         ];
         $this->users->addUser($dataInsert);
@@ -66,6 +67,7 @@ class UsersController extends Controller
         $users->name = $request->input('name');
         $users->email = $request->input('email');
         $users->password = $request->input('password');
+        date('Y-m-d H:i:s');
         $users->update();
         return redirect('users')->with('msg','users data updated successfully');
 
