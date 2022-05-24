@@ -73,6 +73,9 @@ class TypeController extends Controller
         }
     
         return redirect()->route('type.index_type')->with('msg',$msg);
+
+
+
     }
 
     public function edit($id =0){

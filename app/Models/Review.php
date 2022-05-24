@@ -19,14 +19,15 @@ class Review extends Model
         return $this->belongsTo(User::class, "user_id");
     }
     public function getAllReview(){
-        $review = DB::select('SELECT * FROM `review`,`users` 
+        $review = DB::select('SELECT `review`.`id`,`rating`,`users`.`name`,`comment`,`datetime` 
+        FROM `review`,`users` 
         WHERE `review`.`user_id`= `users`.`id` 
         ORDER BY `review`.`id` DESC;');
         return $review;  
     }
 
     public function addReview($data){
-        DB::insert('INSERT INTO `review`( `rating`, `user_id`, `comment`, `datetime`,`created_at`) VALUES (?,?,?,?,?)',$data);
+        DB::insert('INSERT INTO `review`( `rating`, `user_id`, `comment`, `datetime`) VALUES (?,?,?,?)',$data);
     }
 
     public function getDetail($id){

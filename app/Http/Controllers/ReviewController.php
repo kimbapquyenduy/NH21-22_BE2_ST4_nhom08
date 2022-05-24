@@ -47,14 +47,17 @@ class ReviewController extends Controller
             $request->user_id,         
             $request->comment,   
             $request->datetime,  
-            date('Y-m-d H:i:s'), 
+            date('Y-m-d H:i:s'),
         ];
         $this->review->addReview($dataInsert);
         return redirect()->route('review.index_review')->with('msg','Add successfully');
     }
     public function edit($id){
         $review = Review::find($id);
-        return view('clients.review.edit',compact('review'));
+        $users = new Users();
+
+        $usersList = $this->users->getAllUsers();
+        return view('clients.review.edit',compact('review','usersList'));
     }
     public function update(Request $request,$id){
         $review = Review::find($id);

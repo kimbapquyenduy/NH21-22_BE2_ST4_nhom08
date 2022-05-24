@@ -1,8 +1,8 @@
 @extends('footer')
 @section('content')
   <!-- Main content -->
-    <h2 style="text-align: center"> LISTS Manufacture </h2>
-    <a href="{{ route('review.add_review')}}" class="btn btn-primary float-sm-right" >Add Manufacture</a>
+    <h2 style="text-align: center"> LISTS Review </h2>
+    <!-- <a href="{{ route('review.add_review')}}" class="btn btn-primary float-sm-right" >Add Review</a> -->
     <hr>
     <table class="table table-bordered" style="text-align: center">
         <thead>

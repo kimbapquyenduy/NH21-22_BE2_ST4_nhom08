@@ -5,7 +5,7 @@
     @if (session('msg'))
     <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <h2> ADD PRODUCT TYPES </h2>
+    <h2 style="text-align: center"> ADD PRODUCT TYPES </h2>
     @if ($errors->any())
         <div class="alect alect-danger">Data no successfully</div>
     @endif

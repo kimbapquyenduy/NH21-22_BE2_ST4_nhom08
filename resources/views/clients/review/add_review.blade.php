@@ -5,7 +5,7 @@
     @if (session('msg'))
     <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <h2> ADD MANUFACTURE </h2>
+    <h2 style="text-align: center"> ADD REVIEW </h2>
     @if ($errors->any())
         <div class="alect alect-danger">Invalid data</div>
     @endif
@@ -40,13 +40,16 @@
         </div>
         <div class="mb-3">
             <label for=""> Datetime </label>
-            <input type="text" class="form-control" name="datetime" placeholder="datetime for form yyyy/mm/dd..." value="{{old('datetime')}}"/>
+            <input type="date" id="start" name="datetime"
+                value="{{old('datetime')}}"
+                min="2018-01-01" max="2030-12-31">
+            
             @error('datetime')
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Update new</button>
+        <button type="submit" class="btn btn-primary">Add new</button>
         <a href="{{ route('review.index_review')}}" class="btn btn-warning">Back</a>
         @csrf
     </form> 

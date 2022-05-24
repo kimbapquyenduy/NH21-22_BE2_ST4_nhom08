@@ -23,7 +23,6 @@ class Product extends Model
         return $this->hasMany(Review::class, 'review_id', 'product_id');
     }
 
-
     public function getAllProduct(){
         $type = DB::select("SELECT `product`.`id`,`product_name`,`product_price`,`product_img`,
          `product_description`,`product_feature`,`stock`, `sale_amount`,`expire_date`,

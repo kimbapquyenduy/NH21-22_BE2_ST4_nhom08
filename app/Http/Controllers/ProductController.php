@@ -64,7 +64,7 @@ class ProductController extends Controller
             $filename = time().'.'.$extention;
             $file->move('images/',$filename);
         };
-        //return 'ok';
+        
         $dataInsert = [
             $request->product_name,
             $request->product_price,
