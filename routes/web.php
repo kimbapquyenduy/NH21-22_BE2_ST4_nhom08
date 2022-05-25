@@ -90,10 +90,18 @@ Route::post('/update-users/{id}', [UsersController::class, 'update']);
 //dashboard
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+    
 });
 //end dashboard
 
 require __DIR__ . '/auth.php';
+
+//start wishlist route
+Route::get('/addwl/{id}', [MyController::class, 'AddWL']);
+Route::get('/deletewl/{id}', [MyController::class, 'Deletewl']);
+Route::get('/wishlist', [MyController::class, 'Loadwishlist']);
+//end wishlist
+
 //start cart route
 Route::get('/addcart/{id}', [MyController::class, 'AddCart']);
 Route::get('/delcart/{id}', [MyController::class, 'DeleteCart']);

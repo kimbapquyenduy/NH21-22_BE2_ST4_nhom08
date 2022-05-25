@@ -54,8 +54,8 @@
                                                 <div class="mask-icon">
                                                     <ul>
                                                         <li><a href="{{ url('shop-detail/'.$row->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                        
+                                                        <li><a onclick="Addwishlist('{{$row->id}}')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                     </ul>
                                                     <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
                                                 </div>
@@ -84,7 +84,7 @@
                                                         <ul>
                                                             <li><a href="{{ url('shop-detail/'.$row->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
 
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                            <li><a onclick="Addwishlist('{{$row->id}}')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                         </ul>
 
                                                     </div>
@@ -94,29 +94,7 @@
                                         <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                                             <div class="why-text full-width">
                                                 <h4>{{ $row->product_name }}</h4>
-                                                <h5> <del>{{ number_format($row->product_price) }} VND</del>
-                                                    <?php
-                                                    // echo($row->expire_date - date("Y/m/d"));
-                                                    $now = time(); // or your date as well
-                                                    $your_date = strtotime($row->expire_date);
-                                                    $datediff = $now - $your_date;
-
-                                                    $result = round($datediff / (60 * 60 * 24));
-                                                    if ($result > 10 && $result < 6) {
-                                                        $price_sale = ($row->product_price * 10) / 100;
-                                                        echo $price_sale;
-                                                    } else if ($result < 10) {
-                                                        echo " New";
-                                                    } else if ($result > 5 && $result < 3) {
-                                                        $price_sale = ($row->product_price * 30) / 100;
-                                                        echo $price_sale;
-                                                    } else if ($result > 0 && $result <= 3) {
-                                                        $price_sale = ($row->product_price * 50) / 100;
-                                                        echo $price_sale;
-                                                    } else {
-                                                    }
-
-                                                    ?></h5>
+                                                <h5>{{ number_format($row->product_price) }} VND</h5>
                                                 <p>{{ $row->product_description }}</p>
                                                 <a class="btn hvr-hover" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
                                             </div>

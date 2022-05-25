@@ -32,18 +32,15 @@ class ReviewController extends Controller
 
     public function postAdd_review(Request $request){
         $request-> validate([
-            'rating'=>'required',
             'user_id'=>'required',
             'comment'=>'required|min:5',
 
         ],[
-            'rating.required' =>'ratting required to enter',
             'user_id.required' =>'user_id required to enter',
             'comment.required' =>'ratting required to enter',
             'comment.min:5' =>'comment with minimum 5 characters or more'
         ]);
-        $dataInsert = [
-            $request->rating,  
+        $dataInsert = [ 
             $request->user_id,         
             $request->comment,   
             $request->datetime,  
@@ -55,13 +52,11 @@ class ReviewController extends Controller
     public function edit($id){
         $review = Review::find($id);
         $users = new Users();
-
         $usersList = $this->users->getAllUsers();
         return view('clients.review.edit',compact('review','usersList'));
     }
     public function update(Request $request,$id){
         $review = Review::find($id);
-        $review->rating = $request->input('rating');
         $review->user_id = $request->input('user_id');
         $review->comment = $request->input('comment');
         $review->datetime = $request->input('datetime');

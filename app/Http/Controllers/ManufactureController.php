@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Manufacture;
+use App\Models\Product;
+
 class ManufactureController extends Controller
 {
     private $manufacture;
@@ -39,22 +41,30 @@ class ManufactureController extends Controller
         return redirect()->route('manufacture.index_manufacture')->with('msg','Add successfully');
     }
     public function delete($id=0){
-        if(!empty($id)){
-            $manufactureDetail = $this->manufacture->getDetail($id);
-            if(!empty($manufactureDetail[0])){
-               $deleteStatus = $this->manufacture->deleteManufacture($id);
-                if($deleteStatus){
-                    $msg = 'Delete manufacture not successfully';
+        $Product = Product::where('manufacture_id', $id)->get();
+        if (  $Product->count()<=0) {
+            if(!empty($id)){
+                $manufactureDetail = $this->manufacture->getDetail($id);
+                if(!empty($manufactureDetail[0])){
+                   $deleteStatus = $this->manufacture->deleteManufacture($id);
+                    if($deleteStatus){
+                        $msg = 'Delete manufacture not successfully';
+                    }else{
+                        $msg = 'you can not delete now, please come back later';
+                    }
                 }else{
-                    $msg = 'you can not delete now, please come back later';
+                    $msg = 'manufacture exist';
                 }
             }else{
-                $msg = 'manufacture exist';
+                $msg = 'link exist';
             }
-        }else{
-            $msg = 'link exist';
         }
-        return redirect()->route('manufacture.index_manufacture')->with('msg',$msg);
+        else {
+        
+        }
+        
+        return redirect()->route('manufacture.index_manufacture');
+
     }
 
     public function edit($id){

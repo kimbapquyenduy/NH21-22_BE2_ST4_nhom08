@@ -56,23 +56,33 @@ class TypeController extends Controller
     }
 
     public function delete($id=0){
-        if(!empty($id)){
-            $typeDetail = $this->product_type->getDetail($id);
-            if(!empty($typeDetail[0])){
-               $deleteStatus = $this->product_type->deleteType($id);
-                if($deleteStatus){
-                    $msg = 'delete product type not successfully';
+
+        $Product = Product::where('type_id', $id)->get();
+        
+        if ($Product->count()<=0) {
+            if(!empty($id)){
+                $typeDetail = $this->product_type->getDetail($id);
+                if(!empty($typeDetail[0])){
+                   $deleteStatus = $this->product_type->deleteType($id);
+                    if($deleteStatus){
+                        $msg = 'delete product type not successfully';
+                    }else{
+                        $msg = 'You can not delete now, please come back later';
+                    }
                 }else{
-                    $msg = 'You can not delete now, please come back later';
+                    $msg = 'product type exist';
                 }
             }else{
-                $msg = 'product type exist';
+                $msg = 'link exist';
             }
-        }else{
-            $msg = 'link exist';
         }
+        else {
+          
+        }
+
+        
     
-        return redirect()->route('type.index_type')->with('msg',$msg);
+        return redirect()->route('type.index_type');
 
 
 

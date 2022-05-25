@@ -144,7 +144,7 @@
                                 <li><a href="{{url('cart')}}">Cart</a></li>
                                 <li><a href="{{url('checkout')}}">Checkout</a></li>
                                 <li><a href="javascript:">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="{{url('wishlist')}}">Wishlist</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{{url('shop')}}">Gallery</a></li>
@@ -355,6 +355,29 @@
                 alertify.success('Add to cart successfully');
             });
         }
+
+       
+
+        function  Addwishlist(id) {
+            $.ajax({
+                url: '/addwl/' + id,
+                type: 'GET',
+            }).done(function(res) {
+               
+                alertify.success('Add to Wishlist successfulsly');
+            });
+        }
+        
+        function  deletewl(id) {
+            $.ajax({
+                url: '/deletewl/' + id,
+                type: 'GET',
+            }).done(function(res) {
+                RenderListCart(res);
+                alertify.success('Delete Wishlist Item successfulsly');
+            });
+        }
+
 
         function DeleteCart(id) {
             $.ajax({

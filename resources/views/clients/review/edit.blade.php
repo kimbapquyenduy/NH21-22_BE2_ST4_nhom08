@@ -12,13 +12,7 @@
 
 
     <form action="{{url('update-review/'.$review->id)}}" method="POST" enctype="multipart/form-data">
-    <div class="mb-3">
-            <label for="">Rating </label>
-            <input type="text" class="form-control" name="rating" placeholder="ratting..." value="{{old('rating')??$review->rating}}"/>
-            @error('rating')
-            <span style="color: red;">{{$message}}</span>
-            @enderror
-        </div>
+
         <div class="mb-3">
             <label for="">User_id </label>            
             <select id="inputStatus" class="form-control custom-select" name='user_id' value="{{old('user_id')??$review->user_id}}">
