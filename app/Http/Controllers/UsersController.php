@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Users;
 use SebastianBergmann\Type\Type;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -49,7 +51,7 @@ class UsersController extends Controller
         $dataInsert = [
             $request->name,
             $request->email,
-            $request->password,
+            $request->password = hash::make('password'),
             date('Y-m-d H:i:s'),
          
         ];

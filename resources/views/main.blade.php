@@ -85,7 +85,47 @@
                             <ul>
                                 <li><a href="{{ url('shop-detail/'.$row->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
 
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                <li><a onclick="Addwishlist('{{$row->id}}')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                            </ul>
+                            <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4>{{$row->product_name}}</h4>
+                        <h5> {{ number_format($row->product_price) }}VND</h5>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+        </div>
+
+
+    </div>
+</div>
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1> NEW PRODUCT</h1>
+                    <p>Fresh and ready to go!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-products-box owl-carousel owl-theme">
+            @foreach($new as $row)
+
+            <div class="item">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <img src="{{ asset('images/'.$row->product_img)}}" class="img-fluid" alt="Image">
+                        <div class="mask-icon">
+                            <ul>
+                                <li><a href="{{ url('shop-detail/'.$row->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+
+                                <li><a onclick="Addwishlist('{{$row->id}}')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                             </ul>
                             <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
                         </div>
@@ -143,7 +183,7 @@
                             <ul>
                                 <li><a href="{{ url('shop-detail/'.$row->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
 
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                <li><a onclick="Addwishlist('{{$row->id}}')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                             </ul>
                             <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
                         </div>
@@ -184,7 +224,7 @@
                             <ul>
                                 <li><a href="{{ url('shop-detail/'.$row->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
 
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                <li><a onclick="Addwishlist('{{$row->id}}')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                             </ul>
                             <a class="cart" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to Cart</a>
                         </div>

@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+@if (Auth::check())
 
+@else
+<script>
+    window.location.replace("login");
+</script>
+@endif
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

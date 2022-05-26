@@ -56,7 +56,7 @@
 
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn">
-                            <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
+                            <a class="btn hvr-hover" onclick="Addwishlist('{{$row->id}}')" href="javascript:"><i class="fas fa-heart"></i> Add to wishlist</a>
                             <a class="btn hvr-hover" data-fancybox-close="" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to cart</a>
                         </div>
                     </div>

@@ -27,14 +27,10 @@ class ProductController extends Controller
         return view('clients.products.lists_product', compact('title','productList'));
     }
     public function add_product(){
-        $title='Add product'; 
-          
+        $title='Add product';       
         $product_type = new Product_type();
-
         $typeList = $this->product_type->getAllType();
-
         $manufacture = new Manufacture();
-
         $manufacturesList = $this->manufacture->getAllManufacture();
         return view('clients.products.add_product', compact('typeList','manufacturesList'));
     }
@@ -81,6 +77,12 @@ class ProductController extends Controller
         ];
         $this->product->addProduct($dataInsert);
         return redirect()->route('product.index_product')->with('msg','Add successfully');
+    }
+     public function checkwl()
+    {
+        if (Auth::check()) {
+            
+        }
     }
     public function delete($id=0){
         if(!empty($id)){
