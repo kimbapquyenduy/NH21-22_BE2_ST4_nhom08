@@ -16,7 +16,7 @@ class Checkout extends Model
     public function addOder($data)
     {
         DB::insert('INSERT INTO `checkout`( `product_name`,`product_price`, `product_img`,`status`,`quanity`,
-          `user_id`) 
-         VALUES (?,?,?,?,?,?)', $data);
+          `user_id`,`created_at`) 
+         VALUES (?,?,?,?,?,?,?)', $data);
     }
 }
