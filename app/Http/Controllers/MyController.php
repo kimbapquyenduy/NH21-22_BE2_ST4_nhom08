@@ -159,7 +159,6 @@ class MyController extends Controller
     }
     function Placeorder()
     {
-
         $order = new Checkout();
         $userid = Auth::id();
         foreach (Cart::getContent() as $item) {
@@ -181,6 +180,13 @@ class MyController extends Controller
 
         return view('cart');
     }
+
+    function LoadOrder()
+    {
+        $data = Checkout::where('user_id', Auth::id())->get();
+        return view('order', ['data' => $data]);
+    }
+
     function UpdateListCart($id, $newquan)
     {
         Cart::update($id,  array(

@@ -24,6 +24,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 |
 */
 
+
+
 Route::get('/logout', [RegisteredUserController::class, 'logout']);
 //lists checkout
 Route::prefix('checkout')->name('checkout.')->group(function () {
@@ -93,6 +95,9 @@ Route::post('/update-users/{id}', [UsersController::class, 'update']);
 
 
 
+Route::get('/placeorder', [MyController::class, 'Placeorder']);
+Route::get('/order', [MyController::class, 'LoadOrder']);
+
 //dashboard
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
@@ -100,7 +105,7 @@ Route::group(['middleware' => ['auth']], function () {
 //end dashboard
 
 require __DIR__ . '/auth.php';
-
+Route::get('/admin', [ProductController::class, 'show_product']);
 //start wishlist route
 Route::get('/addwl/{id}', [MyController::class, 'AddWL']);
 Route::get('/deletewl/{id}', [MyController::class, 'Deletewl']);
@@ -124,7 +129,7 @@ Route::get('/showbestselling', [MyController::class, 'ShowProductBestSelling']);
 Route::get('/showbymanu/{id}', [MyController::class, 'ShowProductByManu']);
 Route::get('/showbytype/{id}', [MyController::class, 'ShowProductByType']);
 //end gallery route
-Route::get('/placeorder', [MyController::class, 'Placeorder']);
+
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
 
 Route::get('/search-result', [MyController::class, 'searchProductByName']);

@@ -143,7 +143,7 @@
                                 <li><a href="{{url('shop')}}">Sidebar Shop</a></li>
                                 <li><a href="{{url('cart')}}">Cart</a></li>
                                 <li><a href="{{url('checkout')}}">Checkout</a></li>
-                                <li><a href="javascript:">My Account</a></li>
+                                <li><a href="{{url('order')}}">My Order</a></li>
                                 <li><a href="{{url('wishlist')}}">Wishlist</a></li>
                             </ul>
                         </li>
@@ -356,19 +356,19 @@
             });
         }
 
-       
 
-        function  Addwishlist(id) {
+
+        function Addwishlist(id) {
             $.ajax({
                 url: '/addwl/' + id,
                 type: 'GET',
             }).done(function(res) {
-               
+
                 alertify.success('Add to Wishlist successfulsly');
             });
         }
-        
-        function  deletewl(id) {
+
+        function deletewl(id) {
             $.ajax({
                 url: '/deletewl/' + id,
                 type: 'GET',

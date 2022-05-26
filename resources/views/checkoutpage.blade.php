@@ -227,7 +227,7 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="col-12 d-flex shopping-box"> <a href="placeorder" class="ml-auto btn hvr-hover">Place Order</a> </div>
+                    <div class="col-12 d-flex shopping-box"> <a href="{{url('placeorder')}}" class="ml-auto btn hvr-hover">Place Order</a> </div>
                 </div>
             </div>
         </div>

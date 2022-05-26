@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $user->attachRole('2');
+        $user->attachRole('1');
 
         event(new Registered($user));
 
@@ -52,7 +52,8 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
-    public function logout(Request $user){
+    public function logout(Request $user)
+    {
         Auth::logout($user);
         return redirect('/login');
     }
