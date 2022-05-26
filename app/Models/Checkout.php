@@ -13,10 +13,19 @@ class Checkout extends Model
     {
         return $this->belongsTo(User::class, "user_id");
     }
+
+    public function getAllCheckout(){
+        $checkout = DB::select("SELECT `checkout`.`id`,`product_name`,`product_price`,`product_img`,
+        `quanity`,`name`,`status` FROM `checkout`,`users` WHERE `checkout`.`user_id`=`users`.`id` 
+        ORDER BY `checkout`.`id` DESC;");
+        return $checkout;  
+    }
     public function addOder($data)
     {
         DB::insert('INSERT INTO `checkout`( `product_name`,`product_price`, `product_img`,`status`,`quanity`,
           `user_id`,`created_at`) 
          VALUES (?,?,?,?,?,?,?)', $data);
     }
+
+
 }

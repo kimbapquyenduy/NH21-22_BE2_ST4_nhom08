@@ -161,6 +161,12 @@
                     <p>Review</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ route('checkout.index_Checkout')}}" class="nav-link active">
+                  <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <p>Check Order</p>
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>

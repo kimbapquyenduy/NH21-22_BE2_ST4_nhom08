@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Product_type;
 use App\Models\Manufacture;
+use App\Models\Users;
 class ProductController extends Controller
 {
     private $product;
     private $product_type;
     private $manufacture;
+    private $users;
     public function __construct(){
         $this->product = new Product();
         $this->product_type = new Product_type();
         $this->manufacture = new Manufacture();
+        $this->users = new Users();
     }
 
     public function index_product(){
@@ -25,6 +28,18 @@ class ProductController extends Controller
         $productList = $this->product->getAllProduct();
 
         return view('clients.products.lists_product', compact('title','productList'));
+    }
+
+    public function show_product(){
+        $title = 'Lists products ';
+
+        $product = new Product();
+
+        $productList =$this->product->count('id');
+        $typeList = $this->product_type->count('id');
+        $manufacturesList = $this->manufacture->count('id');
+        $usersList = $this->users->count('id');
+        return view('admin', compact('productList','typeList','manufacturesList','usersList'));
     }
     public function add_product(){
         $title='Add product';       

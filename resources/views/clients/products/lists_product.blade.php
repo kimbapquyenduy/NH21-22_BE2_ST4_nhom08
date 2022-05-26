@@ -29,7 +29,7 @@
             <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->product_name}}</td>
-                <td>{{$item->product_price}}</td>
+                <td>{{number_format($item->product_price)}}$</td>
                 <td><img  src="{{asset('images/'.$item->product_img)}}" class="card-img-top" alt="..."></td>
                 <td >{{ substr($item->product_description,0,30) }}</td>
 
