@@ -8,6 +8,7 @@ use App\Models\Product_type;
 use App\Models\Manufacture;
 use App\Models\User;
 use App\Models\Wishlist;
+use App\Models\Checkout;
 use Mail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Auth;
 
 class MyController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->wishlist = new Wishlist();
-       
     }
     function index()
     {
@@ -42,7 +43,7 @@ class MyController extends Controller
         return view('shop-detail', ['dat' => $productdetail, 'data' => $product]);
     }
     function getProductByTypeID($id)
-    {   
+    {
         $product = Product::where('type_id', $id)->get();
         return view('producttype', ['productType' => $product]);
     }
@@ -101,43 +102,38 @@ class MyController extends Controller
     }
     function Addwl($id)
     {
-            
-       $wishlist= new Wishlist();
-       $product = Product::findOrFail($id);
+
+        $wishlist = new Wishlist();
+        $product = Product::findOrFail($id);
         $userid = Auth::id();
-       $dataInsert = [
-        $userid,
-        $product->product_name,
-        $product->product_img ,
-        $product->product_price,
-        $product->stock,  
-        date('Y-m-d H:i:s'),
-    ];
+        $dataInsert = [
+            $userid,
+            $product->product_name,
+            $product->product_img,
+            $product->product_price,
+            $product->stock,
+            date('Y-m-d H:i:s'),
+        ];
 
-       $wishlist->addWL($dataInsert);
-
-    
-      
-      
+        $wishlist->addWL($dataInsert);
     }
 
-     function Loadwishlist()
+    function Loadwishlist()
     {
-        $data= Wishlist::where('user_id', Auth::id())->get();
-        return view('wishlist',['data' => $data]);
-
+        $data = Wishlist::where('user_id', Auth::id())->get();
+        return view('wishlist', ['data' => $data]);
     }
     function Deletewl($id)
     {
 
-        $wishlist= new Wishlist();
-    
-             $deleteStatus = $this->wishlist->deleteWL($id);
-            
-      
+        $wishlist = new Wishlist();
 
-        $data= Wishlist::where('user_id', Auth::id())->get();
-        return view('wishlist',['data' => $data]);
+        $deleteStatus = $this->wishlist->deleteWL($id);
+
+
+
+        $data = Wishlist::where('user_id', Auth::id())->get();
+        return view('wishlist', ['data' => $data]);
     }
 
     function AddCart($id)
@@ -148,7 +144,7 @@ class MyController extends Controller
         $cart = Cart::getContent();
         return view('cartitem');
     }
-    
+
     function DeleteCart($id)
     {
         Cart::remove($id);
@@ -161,10 +157,26 @@ class MyController extends Controller
         Cart::remove($id);
         return view('listcart');
     }
-    function CartDestoy()
+    function Placeorder()
     {
-        Cart::clear();
 
+        $order = new Checkout();
+        $userid = Auth::id();
+        foreach (Cart::getContent() as $item) {
+            $dataInsert = [
+                $item->name,
+                $item->price,
+                $item['attributes']->img,
+                "Unprocess",
+                $item->quantity,
+                $userid,
+            ];
+            $order->addOder($dataInsert);
+        }
+
+
+
+        Cart::clear();
 
         return view('cart');
     }

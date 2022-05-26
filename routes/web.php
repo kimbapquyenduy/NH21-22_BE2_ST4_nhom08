@@ -90,7 +90,6 @@ Route::post('/update-users/{id}', [UsersController::class, 'update']);
 //dashboard
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-    
 });
 //end dashboard
 
@@ -119,7 +118,7 @@ Route::get('/showbestselling', [MyController::class, 'ShowProductBestSelling']);
 Route::get('/showbymanu/{id}', [MyController::class, 'ShowProductByManu']);
 Route::get('/showbytype/{id}', [MyController::class, 'ShowProductByType']);
 //end gallery route
-Route::get('/placeorder', [MyController::class, 'CartDestoy']);
+Route::get('/placeorder', [MyController::class, 'Placeorder']);
 //Route::get('/', [ProductTypeController::class, 'getProductType']);
 
 Route::get('/search-result', [MyController::class, 'searchProductByName']);
