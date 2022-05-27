@@ -29,18 +29,18 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/logout', [RegisteredUserController::class, 'logout']);
 //lists checkout
+Route::get('/update-checkout1/{id}', [Check_orderController::class, 'update1']);
+Route::get('/update-checkout2/{id}', [Check_orderController::class, 'update2']);
 Route::prefix('checkout')->name('checkout.')->group(function () {
     Route::get('/', [Check_orderController::class, 'index_Checkout'])->name('index_Checkout');
     Route::get('/delete/{id}', [Check_orderController::class, 'delete'])->name('delete');
 });
-Route::get('/update-checkout/{id}', [Check_orderController::class, 'update']);
+
 //lists review
 Route::prefix('review')->name('review.')->group(function () {
     Route::get('/', [ReviewController::class, 'index_review'])->name('index_review');
-
     Route::get('/add_review', [ReviewController::class, 'add_review'])->name('add_review');
     Route::post('/add_review', [ReviewController::class, 'postAdd_review'])->name('post-add_review');
-
     Route::get('/delete/{id}', [ReviewController::class, 'delete'])->name('delete');
 });
 Route::get('/edit-review/{id}', [ReviewController::class, 'edit']);
