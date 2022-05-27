@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ManufactureController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Check_orderController;
+use App\Http\Controllers\overview;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
@@ -30,8 +31,9 @@ Route::get('/logout', [RegisteredUserController::class, 'logout']);
 //lists checkout
 Route::prefix('checkout')->name('checkout.')->group(function () {
     Route::get('/', [Check_orderController::class, 'index_Checkout'])->name('index_Checkout');
+    Route::get('/delete/{id}', [Check_orderController::class, 'delete'])->name('delete');
 });
-
+Route::get('/update-checkout/{id}', [Check_orderController::class, 'update']);
 //lists review
 Route::prefix('review')->name('review.')->group(function () {
     Route::get('/', [ReviewController::class, 'index_review'])->name('index_review');
@@ -67,7 +69,7 @@ Route::prefix('product')->name('product.')->group(function () {
 });
 Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
 Route::post('/update-product/{id}', [ProductController::class, 'update']);
-Route::get('/admin', [ProductController::class, 'show_product']);
+Route::get('overview', [overview::class, 'show_product']);
 //danh sách loai sản phẩm
 Route::prefix('type')->name('type.')->group(function () {
     Route::get('/', [TypeController::class, 'index_type'])->name('index_type');

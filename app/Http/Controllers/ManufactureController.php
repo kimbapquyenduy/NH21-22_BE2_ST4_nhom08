@@ -59,12 +59,9 @@ class ManufactureController extends Controller
                 $msg = 'link exist';
             }
         }
-        else {
-        
-        }
-        
+        else {       
+        }     
         return redirect()->route('manufacture.index_manufacture');
-
     }
 
     public function edit($id){

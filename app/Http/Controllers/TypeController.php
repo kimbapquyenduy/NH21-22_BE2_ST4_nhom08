@@ -80,12 +80,7 @@ class TypeController extends Controller
           
         }
 
-        
-    
         return redirect()->route('type.index_type');
-
-
-
     }
 
     public function edit($id =0){

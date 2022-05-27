@@ -28,4 +28,11 @@ class Checkout extends Model
           `user_id`,`created_at`) 
          VALUES (?,?,?,?,?,?,?)', $data);
     }
+    public function getDetail($id){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE id = ?',[$id]);
+    }
+
+    public function deleteCheckOut($id){
+        return DB::delete("DELETE FROM $this->table WHERE id=?",[$id]);
+    }
 }

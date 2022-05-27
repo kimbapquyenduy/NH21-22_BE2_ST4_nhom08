@@ -131,6 +131,12 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="{{ url('overview')}}" class="nav-link active">
+                  <i class="fa fa-database" aria-hidden="true"></i>
+                    <p>Overview</p>
+                  </a>
+                </li>
                 <li class="nav-item">
                   <a href="{{ route('product.index_product')}}" class="nav-link active">
                   <i class="fa fa-list" aria-hidden="true"></i>
