@@ -103,11 +103,10 @@
         </div>
         <div class="mb-3">
             <label for=""> review comment </label>
-            <select id="inputStatus" class="form-control custom-select" name='review_id' value="{{old('review_id')?? $product->review_id}}">
-                <option value="1">Very bad</option>
-                <option value="2">Vegetables not fresh</option>
-                <option value="3">Crushed fruit</option>
-                <option value="4">moldy seeds</option>
+            <select id="inputStatus" class="form-control custom-select" name='comment_id' value="{{old('comment_id')}}">
+            @foreach($reviewList as $item)   
+            <option value="{{$item->comment_id}}">{{$item->comment}}</option>
+                @endforeach
             </select>
             @error('review_id')
             <span style="color: red;">{{$message}}</span>

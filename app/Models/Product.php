@@ -30,7 +30,7 @@ class Product extends Model
          FROM `product`,`manufacture`,`product_type`,`review` 
          WHERE `product`.`manufacture_id`=`manufacture`.`id` 
          AND `product`.`type_id`=`product_type`.`id` 
-        AND `product`.`review_id`=`review`.`id`     
+        AND `product`.`comment_id`=`review`.`comment_id`     
         ORDER BY `product`.`id` DESC;");
         return $type;  
     }
@@ -38,7 +38,7 @@ class Product extends Model
     public function addProduct($data){
         DB::insert('INSERT INTO `product`(`product_name`, `product_price`, `product_img`,
          `product_description`, `product_feature`,
-         `stock`, `sale_amount`, `expire_date`, `manufacture_id`, `type_id`, `review_id`,`created_at`) 
+         `stock`, `sale_amount`, `expire_date`, `manufacture_id`, `type_id`, `comment_id`,`created_at`) 
          VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',$data);
     }
     public function getDetail($id){
@@ -49,5 +49,5 @@ class Product extends Model
     }
     protected $fillable = ['product_name', 'product_price', 'product_img',
     'product_description', 'product_feature',
-    'stock', 'sale_amount', 'expire_date', 'manufacture_id', 'type_id', 'review_id'];
+    'stock', 'sale_amount', 'expire_date', 'manufacture_id', 'type_id', 'comment_id'];
 }

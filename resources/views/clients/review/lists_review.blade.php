@@ -8,10 +8,10 @@
         <thead>
             <tr>
                 <th width="5%">Id</th>
-                <th>user_id</th>
-                <th>comment</th>
-                <th>datetime</th>
-                <th width="5%">Edit</th>
+                <th>Comment Name</th>
+                <th>Comment</th>
+                <th>Comment Product id</th>
+                <th>Rating</th>
                 <th width="5%">Delete</th>
             </tr>
         </thead>
@@ -19,18 +19,15 @@
             @if (!empty($reviewList))
             @foreach($reviewList as $item)
             <tr>
-                <td>{{$item->id}}</td>
-                <td>{{$item->name}}</td>
+                <td>{{$item->comment_id}}</td>
+                <td>{{$item->comment_name}}</td>
                 <td>{{$item->comment}}</td>
-                <td>{{$item->datetime}}</td>
-                
-                <td>
-                    <a href="{{url ('edit-review/'.$item->id) }}" class="btn btn-warning btn-sm"> Edit </a>   
-                </td>
+                <td>{{$item->id}}</td>
+                <td>{{$item->rating}}</td>  
                 
                 <td>
                     <a   onclick="return confirm('You definitely want to delete ?')" 
-                    href="{{ route('review.delete', ['id'=>$item->id])}}" 
+                    href="{{ route('review.delete', ['comment_id'=>$item->comment_id])}}" 
                      class="btn btn-danger btn-sm"> Delete </a> 
                 </td>
             </tr>

@@ -7,9 +7,12 @@ use App\Models\Product;
 use App\Models\Product_type;
 use App\Models\Manufacture;
 use App\Models\Users;
+use App\Models\Review;
+
 class ProductController extends Controller
 {
     private $product;
+    private $review;
     private $product_type;
     private $manufacture;
     private $users;
@@ -18,13 +21,14 @@ class ProductController extends Controller
         $this->product_type = new Product_type();
         $this->manufacture = new Manufacture();
         $this->users = new Users();
+        $this->review = new Review();
     }
 
     public function index_product(){
         $title = 'Lists products ';
 
         $product = new Product();
-
+        
         $productList = $this->product->getAllProduct();
 
         return view('clients.products.lists_product', compact('title','productList'));
@@ -34,7 +38,7 @@ class ProductController extends Controller
         $title = 'Lists products ';
 
         $product = new Product();
-
+        
         $productList =$this->product->count('id');
         $typeList = $this->product_type->count('id');
         $manufacturesList = $this->manufacture->count('id');
@@ -42,12 +46,13 @@ class ProductController extends Controller
         return view('admin', compact('productList','typeList','manufacturesList','usersList'));
     }
     public function add_product(){
-        $title='Add product';       
+        $title='Add product';   
+        $reviewList = $this->review->getAllReview();    
         $product_type = new Product_type();
         $typeList = $this->product_type->getAllType();
         $manufacture = new Manufacture();
         $manufacturesList = $this->manufacture->getAllManufacture();
-        return view('clients.products.add_product', compact('typeList','manufacturesList'));
+        return view('clients.products.add_product', compact('reviewList','typeList','manufacturesList'));
     }
 
     public function postAdd_product(Request $request){
@@ -86,7 +91,7 @@ class ProductController extends Controller
             $request->sale_amount,
             $request->expire_date ,
             $request->manufacture_id,
-            $request->type_id,
+            $request->comment_id,
             $request->review_id,
             date('Y-m-d H:i:s'),
         ];
@@ -119,12 +124,13 @@ class ProductController extends Controller
     }
 
     public function edit($id){
+        $reviewList = $this->review->getAllReview();
         $product = Product::find($id);
         $product_type = new Product_type();
         $typeList = $this->product_type->getAllType();
         $manufacture = new Manufacture();
         $manufacturesList = $this->manufacture->getAllManufacture();
-        return view('clients.products.edit_product',compact('product','typeList','manufacturesList'));
+        return view('clients.products.edit_product',compact('reviewList','product','typeList','manufacturesList'));
     }
 
     public function update(Request $request,$id){
@@ -146,7 +152,7 @@ class ProductController extends Controller
         $product->expire_date = $request->input('expire_date');
         $product->manufacture_id = $request->input('manufacture_id');
         $product->type_id = $request->input('type_id');
-        $product->review_id = $request->input('review_id'); 
+        $product->comment_id = $request->input('comment_id'); 
         date('Y-m-d H:i:s');
         $product->update();
         return redirect('product')->with('msg','product data updated successfully');

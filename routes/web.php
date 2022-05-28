@@ -41,10 +41,10 @@ Route::prefix('review')->name('review.')->group(function () {
     Route::get('/', [ReviewController::class, 'index_review'])->name('index_review');
     Route::get('/add_review', [ReviewController::class, 'add_review'])->name('add_review');
     Route::post('/add_review', [ReviewController::class, 'postAdd_review'])->name('post-add_review');
-    Route::get('/delete/{id}', [ReviewController::class, 'delete'])->name('delete');
+    Route::get('/delete/{comment_id}', [ReviewController::class, 'delete'])->name('delete');
 });
 Route::get('/edit-review/{id}', [ReviewController::class, 'edit']);
-Route::post('/update-review/{id}', [ReviewController::class, 'update']);
+Route::post('/update-review/{comment_id}', [ReviewController::class, 'update']);
 
 //lists manufacture
 Route::prefix('manufacture')->name('manufacture.')->group(function () {

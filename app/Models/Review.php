@@ -23,12 +23,11 @@ class Review extends Model
     public function deleteCM($id){
         return DB::delete("DELETE FROM $this->table WHERE comment_id=?",[$id]);
     }
-
+    
     public function getAllReview(){
-        $review = DB::select('SELECT `review`.`id`,`users`.`name`,`comment`,`datetime` 
-        FROM `review`,`users` 
-        WHERE `review`.`user_id`= `users`.`id` 
-        ORDER BY `review`.`id` DESC;');
+        $review = DB::select('SELECT * FROM `review`,`product` 
+        WHERE `review`.`comment_id`=`product`.`comment_id` 
+        ORDER BY `review`.`comment_id` DESC;');
         return $review;  
     }
 
@@ -36,14 +35,11 @@ class Review extends Model
         DB::insert('INSERT INTO `review`(`ratting`, `user_id`, `id`, `comment`, `datetime`, `created_at`)
         VALUES (?,?,?,?,?,?)',$data);
     }
-    public function addReview($data){
-        DB::insert('INSERT INTO `review`( `user_id`, `comment`, `datetime`) VALUES (?,?,?)',$data);
-    }
 
-    public function getDetail($id){
-        return DB::select('SELECT * FROM '.$this->table.' WHERE id = ?',[$id]);
+    public function getDetail($comment_id){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE comment_id = ?',[$comment_id]);
     }
-    public function deleteReview($id){
-        return DB::delete("DELETE FROM $this->table WHERE id=?",[$id]);
+    public function deleteReview($comment_id){
+        return DB::delete("DELETE FROM $this->table WHERE comment_id=?",[$comment_id]);
     }
 }
