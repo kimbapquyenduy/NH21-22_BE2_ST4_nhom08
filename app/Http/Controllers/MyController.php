@@ -105,17 +105,11 @@ class MyController extends Controller
 
     
     
-    function Delete_comment($id)
+    function del_comment($id)
     {
-
-        $wishlist = new Review();
-
+        $review = new Review();
+        $product = Product::findOrFail($id);
         $deleteStatus = $this->review->deleteCM($id);
-
-
-
-        $data = Wishlist::where('user_id', Auth::id())->get();
-        return view('wishlist', ['data' => $data]);
     }
 
     public function send_comment(Request $request){
@@ -144,14 +138,20 @@ class MyController extends Controller
             $output.= '
 
             <div class="row style_comment">
+            <input type="hidden" name="id" class="comment_id" value="'.$comm->comment_id.'">
             <div class="col-md-2">
                 <img width="80%" height="80%" src="'.url('/images/avt.jpg').'" alt="">
             </div>
-            <div class="col-md-10">
-            <p style="color:green">@ '.$comm->comment_name.'</p>
+            <div class="col-md-9">
+            <p style="color:green">@'.$comm->comment_name .'></p>
             <p style="color:black">'.$comm->rating.'&#9733
             </p>    
             <p style="color:black">'.$comm->comment.'</p></div>
+            <div class="col-md-1">
+                <ul>
+                    <li><a onclick="dell('.$comm->comment_id.')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="fas fa-times"></i></a></li>
+                </ul>
+            </div>
         </div>
 
             ';

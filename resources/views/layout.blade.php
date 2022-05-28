@@ -385,8 +385,19 @@
                 });
 
             });
-
         });
+
+        function dell(id) {
+            $.ajax({
+                url: '/deletecm/' + id,
+                type: 'GET',
+            }).done(function(res) {
+
+                RenderListCart(res);
+                alertify.success('Delete Comment successfulsly');
+                load_comment();
+            });
+        }
 
         function Addcart(id) {
             $.ajax({
