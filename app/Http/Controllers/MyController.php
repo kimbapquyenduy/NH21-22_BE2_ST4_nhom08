@@ -8,6 +8,7 @@ use App\Models\Product_type;
 use App\Models\Manufacture;
 use App\Models\User;
 use App\Models\Wishlist;
+use App\Models\Review;
 use App\Models\Checkout;
 use Mail;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -19,6 +20,7 @@ class MyController extends Controller
     public function __construct()
     {
         $this->wishlist = new Wishlist();
+        $this->review = new Review();
     }
     function index()
     {
@@ -100,6 +102,64 @@ class MyController extends Controller
             $email->subject('Hello');
         });
     }
+
+    
+    
+    function Delete_comment($id)
+    {
+
+        $wishlist = new Review();
+
+        $deleteStatus = $this->review->deleteCM($id);
+
+
+
+        $data = Wishlist::where('user_id', Auth::id())->get();
+        return view('wishlist', ['data' => $data]);
+    }
+
+    public function send_comment(Request $request){
+        $product_id = $request->product_id;
+        $comment = $request->comment_content;
+        $comment_name = $request->comment_name;
+        $rating = $request->rating;
+        if( 0 < $rating && $rating > 6 ){
+            $message = "wrong answer";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        }else{
+            $comm = new Review();
+        $comm->comment = $comment;
+        $comm->comment_name = $comment_name;
+        $comm->comment_product_id = $product_id;
+        $comm->rating = $rating;
+        $comm->save();
+        }
+    }
+
+    public function load_comment(Request $request){
+        $product_id = $request->product_id;
+        $review = Review::where('comment_product_id',$product_id)->get();
+        $output = '';
+        foreach($review as $key => $comm){
+            $output.= '
+
+            <div class="row style_comment">
+            <div class="col-md-2">
+                <img width="80%" height="80%" src="'.url('/images/avt.jpg').'" alt="">
+            </div>
+            <div class="col-md-10">
+            <p style="color:green">@ '.$comm->comment_name.'</p>
+            <p style="color:black">'.$comm->rating.'&#9733
+            </p>    
+            <p style="color:black">'.$comm->comment.'</p></div>
+        </div>
+
+            ';
+        }
+        echo $output;
+    } 
+
+    
     function Addwl($id)
     {
 

@@ -346,6 +346,48 @@
     <link rel="stylesheet" href="{{ asset('//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css') }}" />
 
     <script>
+        $(document).ready(function() {
+            
+            load_comment();
+
+            function load_comment(){
+
+                var product_id = $('.comment_product_id').val();
+                var _token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    url : "{{url('/load-comment')}}",
+                    method : "POST",
+                    data:{product_id:product_id, _token:_token},
+                    success:function(data){
+                        $('#comment_show').html(data);
+                    }
+                });
+            }
+
+            $('.send-comment').click(function() {
+                var product_id = $('.comment_product_id').val();
+                var comment_name = $('.comment_name').val();
+                var comment_content = $('.comment_content').val();
+                var rating = $('.rating').val();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url : "{{url('/send-comment')}}",
+                    method : "POST",
+                    data:{product_id:product_id, comment_name: comment_name, comment_content:comment_content, rating:rating,  _token:_token},
+                    success:function(data){
+                        load_comment();
+                        $('#nottìy_comment').fadeOut(5000);
+                        $('.comment_name').val(' ');
+                        $('.comment_content').val(' ');
+                        $('.rating').val('');
+                    }
+                });
+
+            });
+
+        });
+
         function Addcart(id) {
             $.ajax({
                 url: '/addcart/' + id,
@@ -356,8 +398,6 @@
             });
         }
 
-
-
         function Addwishlist(id) {
             $.ajax({
                 url: '/addwl/' + id,
@@ -365,6 +405,16 @@
             }).done(function(res) {
 
                 alertify.success('Add to Wishlist successfulsly');
+            });
+        }
+
+        function AddComment(id) {
+            $.ajax({
+                url: '/addcm/' + id,
+                type: 'GET',
+            }).done(function(res) {
+
+                alertify.success('Add Comment successfulsly');
             });
         }
 
@@ -377,7 +427,6 @@
                 alertify.success('Delete Wishlist Item successfulsly');
             });
         }
-
 
         function DeleteCart(id) {
             $.ajax({

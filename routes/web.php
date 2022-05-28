@@ -108,11 +108,16 @@ Route::group(['middleware' => ['auth']], function () {
 
 require __DIR__ . '/auth.php';
 Route::get('/admin', [ProductController::class, 'show_product']);
+Route::get('/deletecm/{id}', [MyController::class, 'Delete_comment']);
+Route::post('/send-comment', [MyController::class, 'send_comment']);
+Route::post('/load-comment', [MyController::class, 'load_comment']);
 //start wishlist route
 Route::get('/addwl/{id}', [MyController::class, 'AddWL']);
 Route::get('/deletewl/{id}', [MyController::class, 'Deletewl']);
 Route::get('/wishlist', [MyController::class, 'Loadwishlist']);
 //end wishlist
+
+Route::get('/addwl/{id}', [MyController::class, 'AddComment']);
 
 //start cart route
 Route::get('/addcart/{id}', [MyController::class, 'AddCart']);
