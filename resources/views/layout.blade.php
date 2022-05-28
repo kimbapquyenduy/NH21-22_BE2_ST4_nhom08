@@ -419,16 +419,6 @@
             });
         }
 
-        function AddComment(id) {
-            $.ajax({
-                url: '/addcm/' + id,
-                type: 'GET',
-            }).done(function(res) {
-
-                alertify.success('Add Comment successfulsly');
-            });
-        }
-
         function deletewl(id) {
             $.ajax({
                 url: '/deletewl/' + id,

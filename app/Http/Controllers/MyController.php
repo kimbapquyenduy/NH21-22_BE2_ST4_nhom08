@@ -162,11 +162,16 @@ class MyController extends Controller
     
     function Addwl($id)
     {
-
+        $wl = Wishlist::all();
         $wishlist = new Wishlist();
         $product = Product::findOrFail($id);
-        $userid = Auth::id();
-        $dataInsert = [
+        foreach($wl as  $wishs){
+            if($wishs->product_name == $product->product_name){
+
+            }
+            else{
+                $userid = Auth::id();
+            $dataInsert = [
             $userid,
             $product->product_name,
             $product->product_img,
@@ -176,6 +181,8 @@ class MyController extends Controller
         ];
 
         $wishlist->addWL($dataInsert);
+            }
+        }
     }
 
     function Loadwishlist()

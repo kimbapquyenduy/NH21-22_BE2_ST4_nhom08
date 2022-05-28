@@ -117,7 +117,7 @@ Route::get('/deletewl/{id}', [MyController::class, 'Deletewl']);
 Route::get('/wishlist', [MyController::class, 'Loadwishlist']);
 //end wishlist
 
-Route::get('/addwl/{id}', [MyController::class, 'AddComment']);
+
 
 //start cart route
 Route::get('/addcart/{id}', [MyController::class, 'AddCart']);
