@@ -381,24 +381,28 @@
                         $('.comment_name').val(' ');
                         $('.comment_content').val(' ');
                         $('.rating').val('');
+                        
                     }
                 });
 
             });
-        });
 
-        function dell(id) {
-            $.ajax({
-                url: '/deletecm/' + id,
-                type: 'GET',
-            }).done(function(res) {
+            $('.delete-comment').click(function() {
+                var comment_id = $('.comment_id').val();
+                var product_id = $('.comment_product_id').val();
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url : "{{url('/del-comment')}}",
+                    method : "POST",
+                    data:{comment_id:comment_id, product_id:product_id, _token:_token},
+                    success:function(data){
+                        load_comment();
+                    }
+                });
 
-                RenderListCart(res);
-                alertify.success('Delete Comment successfulsly');
-                load_comment();
             });
-        }
 
+        });
         function Addcart(id) {
             $.ajax({
                 url: '/addcart/' + id,
@@ -419,6 +423,27 @@
             });
         }
 
+        function AddComment(id) {
+            $.ajax({
+                url: '/addcm/' + id,
+                type: 'GET',
+            }).done(function(res) {
+
+                alertify.success('Add Comment successfulsly');
+            });
+        }
+
+        function dell(id) {
+            $.ajax({
+                url: '/deletecm/' + id,
+                type: 'GET',
+            }).done(function(res) {
+
+                load_comment();
+                alertify.success('Delete Comment successfulsly');
+            });
+        }
+
         function deletewl(id) {
             $.ajax({
                 url: '/deletewl/' + id,
@@ -428,6 +453,7 @@
                 alertify.success('Delete Wishlist Item successfulsly');
             });
         }
+
 
         function DeleteCart(id) {
             $.ajax({

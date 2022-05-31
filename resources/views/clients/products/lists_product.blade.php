@@ -18,7 +18,7 @@
                 <th>Expire date</th>
                 <th>Manufacture Name</th>
                 <th>Type Name</th>
-                <th>Review</th>
+            
                 <th width="5%"><i class="fa fa-bars" aria-hidden="true"></i></th>
 
             </tr>
@@ -39,7 +39,7 @@
                 <td>{{$item->expire_date}}</td>
                 <td>{{$item->manufacture_name}}</td>
                 <td>{{$item->type_name}}</td>
-                <td>{{$item->comment}}</td>
+               
                 <td>      
                     <a href="{{url ('edit-product/'.$item->id) }}"
                     class="btn btn-warning btn-sm"> Edit </a>   

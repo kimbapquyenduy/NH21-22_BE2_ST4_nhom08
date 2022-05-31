@@ -8,9 +8,9 @@
         <thead>
             <tr>
                 <th width="5%">Id</th>
+                <th>Product Name</th>
                 <th>Comment Name</th>
                 <th>Comment</th>
-                <th>Comment Product id</th>
                 <th>Rating</th>
                 <th width="5%">Delete</th>
             </tr>
@@ -20,9 +20,9 @@
             @foreach($reviewList as $item)
             <tr>
                 <td>{{$item->comment_id}}</td>
+                <td>{{$item->product_name}}</td>
                 <td>{{$item->comment_name}}</td>
                 <td>{{$item->comment}}</td>
-                <td>{{$item->id}}</td>
                 <td>{{$item->rating}}</td>  
                 
                 <td>

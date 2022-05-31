@@ -102,17 +102,7 @@
             <span style="color: red;">{{$message}}</span>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for=""> review comment </label>
-            <select id="inputStatus" class="form-control custom-select" name='comment_id' value="{{old('comment_id')}}">
-            @foreach($reviewList as $item)   
-            <option value="{{$item->comment_id}}">{{$item->comment}}</option>
-                @endforeach
-            </select>
-            @error('review_id')
-            <span style="color: red;">{{$message}}</span>
-            @enderror
-        </div>
+        
 
         <button type="submit" class="btn btn-primary">Update product</button>
         <a href="{{ route('product.index_product')}}" class="btn btn-warning">Back</a>

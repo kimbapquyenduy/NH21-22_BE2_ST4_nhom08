@@ -25,7 +25,7 @@ class CreateProductTable extends Migration
             $table->date('expire_date');
             $table->integer('manufacture_id');
             $table->integer('type_id');
-            $table->integer('review_id');
+            $table->integer('comment_id');
             $table->timestamps();
         });
     }

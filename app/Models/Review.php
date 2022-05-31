@@ -25,9 +25,9 @@ class Review extends Model
     }
     
     public function getAllReview(){
-        $review = DB::select('SELECT * FROM `review`,`product` 
-        WHERE `review`.`comment_id`=`product`.`comment_id` 
-        ORDER BY `review`.`comment_id` DESC;');
+        $review = DB::select('SELECT `review`.`comment_id`,`product`.`product_name`,`comment`,`comment_name`,`rating`
+        FROM `review`,`product` WHERE `review`.`comment_id`=`product`.`id` 
+        ORDER BY `review`.`comment_id` DESC');
         return $review;  
     }
 

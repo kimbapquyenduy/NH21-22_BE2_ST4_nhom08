@@ -28,7 +28,7 @@ class MyController extends Controller
 
         $product_type = Product_type::all();
         $Productbs = Product::orderby('sale_amount', 'ASC')->limit(10)->get();
-        $Productnew = Product::orderby('created_at', 'DESC')->limit(10)->get();
+        $Productnew = Product::orderby('id', 'DESC')->limit(10)->get();
         return view('main', ['data' => $product, 'datatype' => $product_type, 'bs' => $Productbs, 'new' => $Productnew]);
     }
     function page($name = "/")
@@ -117,7 +117,7 @@ class MyController extends Controller
         $comment = $request->comment_content;
         $comment_name = $request->comment_name;
         $rating = $request->rating;
-        if( 0 < $rating && $rating > 6 ){
+        if( 0 < $rating && $rating > 5 ){
             $message = "wrong answer";
             echo "<script type='text/javascript'>alert('$message');</script>";
         }else{
@@ -147,11 +147,6 @@ class MyController extends Controller
             <p style="color:black">'.$comm->rating.'&#9733
             </p>    
             <p style="color:black">'.$comm->comment.'</p></div>
-            <div class="col-md-1">
-                <ul>
-                    <li><a onclick="dell('.$comm->comment_id.')" href="javascript:" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="fas fa-times"></i></a></li>
-                </ul>
-            </div>
         </div>
 
             ';
@@ -162,16 +157,17 @@ class MyController extends Controller
     
     function Addwl($id)
     {
-        $wl = Wishlist::all();
+
+        $wl = Wishlist::where('user_id', Auth::id())->get();
         $wishlist = new Wishlist();
         $product = Product::findOrFail($id);
-        foreach($wl as  $wishs){
-            if($wishs->product_name == $product->product_name){
-
+        foreach($wl as $wish){
+            if($wish->product_name == $product->product_name){
+                echo "1";
             }
             else{
                 $userid = Auth::id();
-            $dataInsert = [
+        $dataInsert = [
             $userid,
             $product->product_name,
             $product->product_img,

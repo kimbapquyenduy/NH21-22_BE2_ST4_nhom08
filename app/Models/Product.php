@@ -26,11 +26,11 @@ class Product extends Model
     public function getAllProduct(){
         $type = DB::select("SELECT `product`.`id`,`product_name`,`product_price`,`product_img`,
          `product_description`,`product_feature`,`stock`, `sale_amount`,`expire_date`,
-         `manufacture`.`manufacture_name`,`product_type`.`type_name`, `review`.`comment` 
-         FROM `product`,`manufacture`,`product_type`,`review` 
+         `manufacture`.`manufacture_name`,`product_type`.`type_name` 
+         FROM `product`,`manufacture`,`product_type` 
          WHERE `product`.`manufacture_id`=`manufacture`.`id` 
          AND `product`.`type_id`=`product_type`.`id` 
-        AND `product`.`comment_id`=`review`.`comment_id`     
+            
         ORDER BY `product`.`id` DESC;");
         return $type;  
     }

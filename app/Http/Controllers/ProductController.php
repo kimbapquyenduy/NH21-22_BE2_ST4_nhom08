@@ -91,8 +91,9 @@ class ProductController extends Controller
             $request->sale_amount,
             $request->expire_date ,
             $request->manufacture_id,
-            $request->comment_id,
-            $request->review_id,
+            $request->type_id,
+            0,
+            
             date('Y-m-d H:i:s'),
         ];
         $this->product->addProduct($dataInsert);
@@ -152,7 +153,7 @@ class ProductController extends Controller
         $product->expire_date = $request->input('expire_date');
         $product->manufacture_id = $request->input('manufacture_id');
         $product->type_id = $request->input('type_id');
-        $product->comment_id = $request->input('comment_id'); 
+        $product->comment_id = 0; 
         date('Y-m-d H:i:s');
         $product->update();
         return redirect('product')->with('msg','product data updated successfully');

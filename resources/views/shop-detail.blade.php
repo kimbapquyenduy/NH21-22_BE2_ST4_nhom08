@@ -63,7 +63,6 @@
                             <a class="btn hvr-hover" data-fancybox-close="" onclick="Addcart('{{$row->id}}')" href="javascript:">Add to cart</a>
                         </div>
                     </div>
-
                     <div class="add-to-btn">
                         <div class="share-bar">
                             <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
@@ -99,7 +98,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="comment_content" class="form-label">Comment</label>
-                    <input type="text" class="form-control comment_content" id="comment_content" name="comment_content" aria-describedby="emailHelp">
+                    <textarea type="text" class="form-control comment_content" id="comment_content" name="comment_content" aria-describedby="emailHelp"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="rating" class="form-label">Rating</label>

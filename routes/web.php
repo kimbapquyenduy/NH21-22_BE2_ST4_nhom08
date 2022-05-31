@@ -44,7 +44,7 @@ Route::prefix('review')->name('review.')->group(function () {
     Route::get('/delete/{comment_id}', [ReviewController::class, 'delete'])->name('delete');
 });
 Route::get('/edit-review/{id}', [ReviewController::class, 'edit']);
-Route::post('/update-review/{comment_id}', [ReviewController::class, 'update']);
+Route::post('/update-review/{id}', [ReviewController::class, 'update']);
 
 //lists manufacture
 Route::prefix('manufacture')->name('manufacture.')->group(function () {
@@ -108,7 +108,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 require __DIR__ . '/auth.php';
 Route::get('/admin', [ProductController::class, 'show_product']);
-Route::get('/deletecm/{id}', [MyController::class, 'del_comment']);
 Route::post('/send-comment', [MyController::class, 'send_comment']);
 Route::post('/load-comment', [MyController::class, 'load_comment']);
 //start wishlist route
@@ -116,8 +115,6 @@ Route::get('/addwl/{id}', [MyController::class, 'AddWL']);
 Route::get('/deletewl/{id}', [MyController::class, 'Deletewl']);
 Route::get('/wishlist', [MyController::class, 'Loadwishlist']);
 //end wishlist
-
-
 
 //start cart route
 Route::get('/addcart/{id}', [MyController::class, 'AddCart']);
